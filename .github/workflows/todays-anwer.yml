@@ -3,7 +3,9 @@ name: Today's Answer
 on:
   schedule:
     # - cron: '0 0 * * *' 
-    - cron: '*/1 * * * *' 
+    - cron: '*/5 * * * *'
+  push:
+    branches: [ main ]
 
 jobs:
   run-command:
