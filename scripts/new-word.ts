@@ -3,20 +3,20 @@ import { supportedLanguages } from "./data/supported-languages";
 import { randomElement } from "../helpers/helpers";
 
 class NewWord {
-    private untranslated?: string;
-    private translated?: string;
-    private languageCode?: string;
-    private language?: string;
-    private milestones: Record<string, boolean> = {};
+    private untranslated? : string;
+    private translated? : string;
+    private languageCode? : string;
+    private language? : string;
+    private milestones : Record<string, boolean> = {};
 
-    public async init() {
+    public async init() : Promise<void> {
         this.fetchLanguage();
         await this.generateWord();
         await this.translate();
-        this.verifyAllData();
+        this.writeData();
     }
 
-    private async generateWord() {
+    private async generateWord() : Promise<void> {
         if (!this.milestones.languageFetched) {
             throw new Error("Language not fetched yet.");
         }
@@ -31,7 +31,7 @@ class NewWord {
         };
     }
 
-    private async translate() {
+    private async translate() : Promise<void> {
         if (!this.milestones.wordGenerated) {
             throw new Error("Word not generated yet.");
         }
@@ -57,7 +57,7 @@ class NewWord {
         }
     };
 
-    private fetchLanguage() {
+    private fetchLanguage() : void {
         if (supportedLanguages.length === 0) {
             throw new Error("No supported languages available.");
         }
@@ -70,7 +70,7 @@ class NewWord {
         this.milestones.languageFetched = true;
     }
 
-    private verifyAllData() {
+    private writeData() : void {
         if (!this.milestones.wordTranslated) {
             throw new Error("Word not translated yet.");
         }
