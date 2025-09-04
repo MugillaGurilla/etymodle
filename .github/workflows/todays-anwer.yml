@@ -2,10 +2,7 @@ name: Today's Answer
 
 on:
   schedule:
-    # - cron: '0 0 * * *' 
-    - cron: '*/5 * * * *'
-  push:
-    branches: [ main ]
+    - cron: '0 0 * * *' 
 
 jobs:
   run-command:
