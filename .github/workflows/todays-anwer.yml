@@ -1,4 +1,4 @@
-name: Convert and Copy Gallery
+name: Today's Answer
 
 on:
   schedule:
