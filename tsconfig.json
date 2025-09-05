@@ -12,7 +12,6 @@
   "include": [
     "scripts/**/*.ts",
     "src/**/*.ts",
-    // "src/**/*.css",
     "helpers/**/*.ts"
   ],
   "exclude": [
