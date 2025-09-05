@@ -1,6 +1,6 @@
 import * as fs from "fs";
-import { supportedLanguages } from "./data/supported-languages";
-import { randomElement } from "../helpers/helpers";
+import { supportedLanguages } from "./data/supported-languages.js";
+import { randomElement } from "../helpers/helpers.js";
 
 class NewWord {
     private untranslated? : string;
