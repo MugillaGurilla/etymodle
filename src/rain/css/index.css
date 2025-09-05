@@ -1,8 +1,21 @@
+:root {
+  --background-color: #f7f7f7;
+  --highlight-color: #0f0f0f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #0f0f0f;
+    --highlight-color: #f7f7f7;
+  }
+}
+
+
 body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #0f0f0f;
+  background-color: var(--background-color);
 }
 
 canvas {
@@ -25,7 +38,7 @@ canvas {
   position: absolute;
   width: 1px;
   height: 10px;
-  background-color: #fff;
+  background-color: var(--highlight-color);
   animation: fall linear infinite;
   z-index: 3;
 }
@@ -36,8 +49,8 @@ canvas {
   height: 3px;
   z-index: 1;
   border-radius: 100%;
-  background-color: #fff;
-  box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.2); 
+  background-color: var(--highlight-color);
+  box-shadow: 0 0 2px 1px var(--highlight-color); 
   filter: blur(-100px);
 }
 
@@ -54,7 +67,7 @@ canvas {
   position: absolute;
   width: 1px;
   height: 100vh;
-  background-color: #e5e5e5d5;
+  background-color: var(--highlight-color);
   animation: fade-out 2s;
   animation: strike 0.5s;
 }
@@ -63,7 +76,7 @@ canvas {
   position: absolute;
   width: 1px;
   height: 100vh;
-  box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.2); 
+  box-shadow: 0 0 10px 5px var(--highlight-color);
   filter: blur(10px);
   z-index: -1;
   animation: strike 0.5s;
@@ -82,7 +95,7 @@ canvas {
   position: absolute;
   width: 20px; 
   height: 2px;
-  background-color: #fff; 
+  background-color: var(--highlight-color); 
   opacity: 0; 
 }
 
