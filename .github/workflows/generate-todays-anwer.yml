@@ -1,4 +1,4 @@
-name: Today's Answer
+name: Generate Today's Answer
 
 on:
   schedule:
