@@ -23,16 +23,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20'
+      # - name: Setup Node.js
+      #   uses: actions/setup-node@v2
+      #   with:
+      #     node-version: '20'
       
       - name: Install dependencies
-        run: |
-          npm install
-          npx tsc
-          npx tsc --outDir dist
+        uses: MugillaGurilla/etymodle/.github/actions/install-dependencies.yml@main
+      # run: |
+        #   npm install
+        #   npx tsc
+        #   npx tsc --outDir dist
       
       - name: Setup Pages
         uses: actions/configure-pages@v5
