@@ -4,8 +4,9 @@ export default function populateVersion() {
     .then((data) => {
       const versionElement = document.querySelector('.version');
       if (versionElement) {
-        versionElement.textContent = `Version Info: ${data.message}`;
+        versionElement.textContent = data.message;
       }
+      versionElement?.setAttribute('title', 'Latest Commit');
     })
     .catch((error) => {
       console.error('Error fetching version info:', error);
