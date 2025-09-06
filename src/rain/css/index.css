@@ -12,6 +12,10 @@ canvas {
   z-index: 2;
 }
 
+#moon-cat {
+  z-index: -10;
+}
+
 .rain {
   position: absolute;
   top: 0;

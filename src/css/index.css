@@ -19,6 +19,7 @@ footer {
 
 footer > div {
   margin-right: 10px;
+  overflow-y: scroll;
 }
 
 .dev-info {
