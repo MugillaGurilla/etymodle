@@ -8,10 +8,13 @@
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
     "rootDir": ".",
+    "resolveJsonModule": true,
+    "moduleResolution": "node"
   },
   "include": [
     "scripts/**/*.ts",
     "src/**/*.ts",
+    "src/**/*.json",
     "helpers/**/*.ts"
   ],
   "exclude": [
