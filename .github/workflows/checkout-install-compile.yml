@@ -1,3 +1,5 @@
+name: Checkout, Install Dependencies, and Compile Typescript
+
 on:
   workflow_call:
 
