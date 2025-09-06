@@ -2,9 +2,11 @@
 html[data-theme='dark'] {
   --background-color: #0f0f0f;
   --highlight-color: #f7f7f7;
+  --green: #4CAF50;
 }
 
 html[data-theme='light'] {
   --background-color: #f7f7f7;
   --highlight-color: #0f0f0f;
+  --green: #4CAF50;
 }

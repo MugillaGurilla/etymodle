@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="./src/rain/css/index.css">
   <link rel="stylesheet" href="./src/css/root.css">
   <link rel="stylesheet" href="./src/css/index.css">
+  <link rel="stylesheet" href="./src/css/game.css">
   <title>Etymodle</title>
 </head>
 <body>
@@ -14,9 +15,26 @@
   <div class="rain"></div>
   <div id="lightning-container"></div>
   <div id="shooting-stars-container"></div>
+  <div class="game-container">
+    <header>
+      <h1>Etymodle</h1>
+      <h2>Guess the language</h2>
+    </header>
+    <main>
+      <div class="game-area">
+        <div class="word-display">_ _ _ _ _</div>
+        <div class="input-area">
+          <input type="text" id="guess-input" maxlength="20" placeholder="Enter your guess here">
+          <button id="submit-guess">Submit</button>
+        </div>
+      </div>
+    </main>
+  </div>
   <footer>
+    <div class="dev-info"><div>Free Palestine</div></div>
     <div class="dev-info"><div class="version"></div></div>
     <div class="dev-info"><div class="dark-theme-toggle">🌗</div></div>
+
   </footer>
   <script type="module" src="./dist/src/rain/init.js"></script>
   <script type="module" src="./dist/src/ts/init.js"></script>

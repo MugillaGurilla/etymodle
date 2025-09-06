@@ -12,7 +12,6 @@ footer {
   padding: 5px 10px;
   background-color: var(--background-color);
   color: var(--highlight-color);
-  font-size: 12px;
   border-radius: 5px;
   z-index: 1000;
   display: flex;
@@ -22,19 +21,19 @@ footer > div {
   margin-right: 10px;
 }
 
-.dark-mode-toggle {
-  cursor: pointer;
-  user-select: none;
-}
-
 .dev-info {
   background-color: var(--highlight-color);
   padding: 10px 25px;
   border-radius: 3px;
-  font-size: 15px;
 }
 
-.version, .dark-theme-toggle {
+.version, 
+.dark-theme-toggle,
+.dev-info > div {
   color: var(--background-color);
-  font-size: 15px;
+  font-size: 0.75rem;
+}
+
+.dark-theme-toggle {
+  cursor: pointer;
 }
