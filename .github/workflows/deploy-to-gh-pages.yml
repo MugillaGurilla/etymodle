@@ -5,6 +5,7 @@ on:
     branches: ["main"]
 
   workflow_dispatch:
+    
 permissions:
   contents: read
   pages: write
@@ -15,9 +16,11 @@ concurrency:
 
 jobs:
   install-dependencies:
+    name: Install Dependencies
     uses: MugillaGurilla/etymodle/.github/workflows/checkout-install-compile.yml@main
 
   deploy:
+    name: Deploy to GitHub Pages
     needs: install-dependencies
     environment:
       name: github-pages
