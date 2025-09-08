@@ -1,12 +1,14 @@
 
 html[data-theme='dark'] {
   --background-color: #0f0f0f;
+  --background-color-translucent: #0f0f0f66;
   --highlight-color: #f7f7f7;
   --green: #4CAF50;
 }
 
 html[data-theme='light'] {
   --background-color: #f7f7f7;
+  --background-color-translucent: #f7f7f766;
   --highlight-color: #0f0f0f;
   --green: #4CAF50;
 }

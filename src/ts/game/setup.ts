@@ -1,10 +1,18 @@
 export default class Setup {
   private untranslated : string = "Gorta";
   private translated : string = "Famine, Privation";
-  private language : string = "Irish";  
+  private language: string = "Irish";  
   private languageCode : string = "ga";
   private maxGuesses : number = 6;
   private milestones : Record<string, boolean> = {};
+
+  public get(key: "language" | "languageCode" | "maxGuesses") : any {
+    const value : any = this[key];
+    if (value === undefined) {
+      throw new Error(`Property ${key} does not exist on Setup.`);
+    }
+    return value;
+  }
 
   async init() {
     await this.prepareData();
@@ -20,7 +28,6 @@ export default class Setup {
         this.translated = data.translated;
         this.language = data.language;
         this.languageCode = data.languageCode;
-        this.maxGuesses = data.maxGuesses;
         this.milestones.dataPrepared = true;
         console.log("Today's word data prepared.");
       })

@@ -6,7 +6,6 @@ on:
 
   workflow_dispatch:
 
-
 jobs:
   generate-todays-answer:
     name: Generate Today's Answer

@@ -1,17 +1,20 @@
+import Correcter from "./correcter.js";
 import Setup from "./setup.js";
 
 export default class Game {
-  private setup: Setup;
+  setup?: Setup;
+  correcter?: Correcter;
 
   constructor() {
-    this.setup = new Setup();
-    // this.correcter = new Correcter(this);
     // this.announcer = new Announcer(this);
   }
-
+  
   public async init() : Promise<void> {
+    this.setup = new Setup();
     await this.setup.init();
-    // await this.correcter.init();
+
+    this.correcter = new Correcter(this);
+    await this.correcter.init();
   }
 }
 

@@ -1,6 +1,6 @@
 import * as fs from "fs";
-import { supportedLanguages } from "./data/supported-languages.js";
-import { randomElement } from "../helpers/helpers.js";
+import { supportedLanguages } from "../data/supported-languages.js";
+import { randomElement, sentencecase } from "../helpers/helpers.js";
 
 class NewWord {
     private untranslated? : string;
@@ -66,7 +66,7 @@ class NewWord {
             throw new Error("Unavailable to fetch supported languages.");
         }
 
-        this.language = randomElement(supportedLanguages);
+        this.language = sentencecase(randomElement(supportedLanguages));
         this.milestones.languageFetched = true;
     }
 

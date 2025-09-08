@@ -3,7 +3,7 @@ export const randomElement = (array : Array<any>) : any => {
 }
 
 export const sentencecase = (str : string) : string => {
-    return str.charAt(0).toUpperCase() + str.slice(1);
+    return str.charAt(0).toUpperCase() + lowercase(str.slice(1));
 }
 
 export const uppercase = (str : string) : string => {

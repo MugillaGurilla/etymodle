@@ -1,0 +1,17 @@
+export const supportedLanguages : Array<string> = [
+  "irish",
+  "Greek",
+  "arabic",
+  "chinese",
+  "japanese",
+  "german",
+  "french",
+  "spanish",
+  "russian",
+  "hungarian",
+  "hindi",
+  "finnish",
+  "maori",
+  "swahili",
+  "tamil"
+];

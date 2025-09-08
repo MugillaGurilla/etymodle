@@ -1,0 +1,1 @@
+export type match = "close" | "none" | "exact";
