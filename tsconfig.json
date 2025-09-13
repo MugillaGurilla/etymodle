@@ -18,9 +18,11 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.json",
-    "src/**/*.sh",
+    "src/**/*.sh"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "cypress",
+    "dist"
   ]
 }

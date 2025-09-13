@@ -15,17 +15,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # install-dependencies:
-  #   name: Install Dependencies
-  #   uses: MugillaGurilla/etymodle/.github/workflows/checkout-install-compile.yml@main
-
-  # run-tests:
-  #   name: Run Tests
-  #   uses: MugillaGurilla/etymodle/.github/workflows/checkout-install-test.yml@main
-
   deploy:
     name: Deploy to GitHub Pages
-    # needs: install-dependencies
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

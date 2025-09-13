@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
-
 import { supportedLanguages } from "../../data/supported-languages.js";
 import { sentencecase } from "../../src/helpers/helpers.js";
 
