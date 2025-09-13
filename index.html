@@ -15,25 +15,25 @@
   <div class="rain"></div>
   <div id="lightning-container"></div>
   <div id="shooting-stars-container"></div>
-  <div class="game-container">
-    <header>
-      <h1>Etymodle</h1>
-      <h3>Guess the language</h2>
-    </header>
-    <main>
-      <div class="game-area">
-        <div class="word-display">_ _ _ _ _</div>
-        <div class="input-area">
-          <input type="text" id="guess-input" maxlength="20" placeholder="Enter your guess here">
-          <button id="submit-guess">Submit</button>
-        </div>
-        <div class="match">
-          <span id="match-info"></span>
-          <span id="match-country"></span>
-        </div>
-        <div class="guesses"></div>
-      </div>
-    </main>
+  <div class="container">
+    <game>
+      <header>
+        <h1>Etymodle</h1>
+        <h3>Guess the language</h2>
+      </header>
+      <main>
+        <GameArea></GameArea>
+        <!-- <div class="game-area">
+          <WordDisplay></WordDisplay>
+          <InputArea></InputArea>
+          <Match></Match>
+          <Guesses></Guesses>
+        </div> -->
+      </main>
+    </game>
+    <result>
+
+    </result>
   </div>
   <footer>
     <div class="dev-info"><div>Free Palestine</div></div>
@@ -41,6 +41,11 @@
     <div class="dev-info"><div class="dark-theme-toggle">🌗</div></div>
   </footer>
   <script type="module" src="./dist/src/rain/init.js"></script>
-  <script type="module" src="./dist/src/ts/init.js"></script>
+  <script type="module">
+    (async () => {
+      await import('./dist/src/components/render.js');
+      await import('./dist/src/ts/init.js');
+    })();
+  </script>
 </body>
 </html>

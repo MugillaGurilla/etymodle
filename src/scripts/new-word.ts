@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import { supportedLanguages } from "../data/supported-languages.js";
+import { supportedLanguages } from "../../data/supported-languages.js";
 import { randomElement, sentencecase } from "../helpers/helpers.js";
 
 class NewWord {

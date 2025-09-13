@@ -1,5 +1,8 @@
 {
   "devDependencies": {
+    "@types/cypress": "^0.1.6",
+    "@types/node": "^24.3.3",
+    "cypress": "^14.5.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
   },
@@ -8,6 +11,8 @@
     "compile": "npx tsc",
     "clean": "rm -rf ./dist",
     "new-word": "npx ts-node dist/scripts/new-word.js",
-    "old-word": "git checkout --  answer/today.json"
+    "old-word": "git checkout --  answer/today.json",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   }
 }

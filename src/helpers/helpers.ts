@@ -13,3 +13,14 @@ export const uppercase = (str : string) : string => {
 export const lowercase = (str : string) : string => {
     return str.toLowerCase();
 }
+
+export const removeFromArray = (array: Array<any>, specific: any) : Array<any> => {
+    return array.filter(item => item !== specific);
+}
+
+export const addStylesheet = (type: string, name: string) : void => {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = `./src/components/${type}s/${name}/${name}.css`;
+    document.head.appendChild(link);
+}

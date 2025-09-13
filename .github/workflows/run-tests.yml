@@ -1,10 +1,10 @@
-# name: Checkout, Install Dependencies, and Compile Typescript
+# name: Run All Tests
 
 # on:
 #   workflow_call:
 
-# jobs:
-#   checkout-install-compile:
+# jobs: 
+#   run-all-tests:
 #     runs-on: ubuntu-latest 
 #     steps: 
 #       - name: Checkout
@@ -20,10 +20,6 @@
 #           npm install
 #           npm install ts-node
 #           npx tsc --outDir dist
-      
-#       - name: Upload build artifact
-#         uses: actions/upload-artifact@v4
-#         with:
-#           name: compiled
-#           path: ./
-#           retention-days: 1
+
+#       - name: Run tests
+#         run: npx cypress run --config video=false
