@@ -12,3 +12,7 @@ html[data-theme='light'] {
   --highlight-color: #0f0f0f;
   --green: #4CAF50;
 }
+
+:root {
+  --max-game-area-width: 300px;
+}

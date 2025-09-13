@@ -1,0 +1,9 @@
+.match {
+  align-content: center;
+  margin: auto;
+  font-size: 1.2em;
+  color: var(--highlight-color);
+  font-weight: bold;
+  min-height: 50px;
+  width: var(--max-game-area-width);
+}

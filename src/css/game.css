@@ -8,45 +8,51 @@
 
 @media (max-width: 850px) {
   .container {
-    padding-top: 30vh;
+    padding-top: 20vh;
   }
 }
 
 @media (min-width: 851px) {
   .container {
-    padding-top: 20vh;
+    padding-top: 15vh;
   }
 }
 
-.game-area {
+/* .game-area {
   padding: 20px;
   text-align: center;
-}
+} */
 
 header {
   color: var(--highlight-color);
 }
 
-.word-display {
+game {
+  max-height: 70vh;
+  overflow-y: auto;
+  /* width: var(--max-game-area-width); */
+}
+
+/* .word-display {
   font-size: 2em;
   margin-bottom: 20px;
   letter-spacing: 5px;
   color: var(--highlight-color);
-}
+} */
 
-.input-area {
+/* .input-area {
   display: grid;
   gap: 10px;
   justify-content: center;
-}
+} */
 
-#guess-input {
+/* #guess-input {
   padding: 10px;
   font-size: 1em;
   border: 2px solid var(--highlight-color);
-}
+} */
 
-#submit-guess {
+/* #submit-guess {
   padding: 10px 20px;
   font-size: 1em;
   background-color: var(--green);
@@ -59,8 +65,8 @@ header {
 #submit-guess:hover {
   opacity: 0.8;
   cursor: pointer;
-}
-
+} */
+/* 
 .guesses {
   margin: 20px auto;
   display: flex;
@@ -79,9 +85,9 @@ header {
   border-radius: 5px;
   background-color: var(--background-color);
   color: var(--highlight-color);
-}
+} */
 
-.match {
+/* .match {
   padding-top: 10px;
   margin: auto;
   font-size: 1.2em;
@@ -90,4 +96,4 @@ header {
   min-height: 50px;
   max-width: 300px
 
-}
+} */

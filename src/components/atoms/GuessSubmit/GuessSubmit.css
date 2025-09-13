@@ -1,0 +1,14 @@
+#submit-guess {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: var(--green);
+  color: var(--highlight-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#submit-guess:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}

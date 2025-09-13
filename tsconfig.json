@@ -15,6 +15,7 @@
     // "src/scripts/**/*.ts",
     "src/**/*.ts",
     "src/**/*.json",
+    "src/**/*.sh",
     // "src/helpers/**/*.ts"
   ],
   "exclude": [

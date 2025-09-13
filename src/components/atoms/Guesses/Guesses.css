@@ -1,0 +1,19 @@
+.guesses {
+  margin: 20px auto;
+  display: flex;
+  width: var(--max-game-area-width);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: start; 
+  gap: 10px;
+  min-height: 300px;
+}
+
+.guess {
+  padding: 10px;
+  max-height: 1.5rem;;
+  border: 1px solid var(--highlight-color);
+  border-radius: 5px;
+  background-color: var(--background-color);
+  color: var(--highlight-color);
+}
