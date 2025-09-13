@@ -14,12 +14,9 @@ export const lowercase = (str : string) : string => {
     return str.toLowerCase();
 }
 
-// export const addStylesheet = (href : string) : void => {
-//     const link = document.createElement('link');
-//     link.rel = 'stylesheet';
-//     link.href = href;
-//     document.head.appendChild(link);
-// }
+export const removeFromArray = (array: Array<any>, specific: any) : Array<any> => {
+    return array.filter(item => item !== specific);
+}
 
 export const addStylesheet = (type: string, name: string) : void => {
     const link = document.createElement('link');

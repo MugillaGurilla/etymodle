@@ -14,8 +14,10 @@ export default class Match {
     container.className = 'match';
     container.setAttribute('data-testid', 'match-item');
     const matchInfo = document.createElement('span');
+    matchInfo.setAttribute('data-testid', 'match-info');
     matchInfo.setAttribute('id', 'match-info');
     const matchCountry = document.createElement('span');
+    matchCountry.setAttribute('data-testid', 'match-country');
     matchCountry.setAttribute('id', 'match-country');
     container.appendChild(matchInfo);
     container.appendChild(matchCountry);
