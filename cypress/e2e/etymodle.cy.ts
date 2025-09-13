@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import { supportedLanguages } from "../../data/supported-languages.js";
 import { sentencecase } from "../../src/helpers/helpers.js";
 
@@ -37,5 +39,33 @@ describe("Etymodle Test Dump", () => {
     cy.get(".match").should("contain", "Did you mean: Japanese?");
     cy.get("[data-testid=\"match-info\"]").should("contain.text", "Did you mean: ");
     cy.get("[data-testid=\"match-country\"]").should("contain.text", "Japanese?");
-  })
+  });
+
+  it("correct, lowercase input is accepted", () => {
+    cy.visit("http://localhost:5500");
+    cy.contains("Etymodle");
+    cy.on('window:alert', msg => {
+      expect(msg).to.contains("Correct!");
+    });
+    cy.fixture("../../answer/today.json").then((answer) => {
+      cy.log(answer);
+      cy.get(".word-display").should("have.text", answer.untranslated);
+      cy.get("#guess-input").type(answer.language.toLowerCase(), { force: true });
+      cy.get("#submit-guess").click({ force: true });
+    });
+  });
+
+  it("correct, uppercase input is accepted", () => {
+    cy.visit("http://localhost:5500");
+    cy.contains("Etymodle");
+    cy.on('window:alert', msg => {
+      expect(msg).to.contains("Correct!");
+    });
+    cy.fixture("../../answer/today.json").then((answer) => {
+      cy.log(answer);
+      cy.get(".word-display").should("have.text", answer.untranslated);
+      cy.get("#guess-input").type(answer.language.toUpperCase(), { force: true });
+      cy.get("#submit-guess").click({ force: true });
+    });
+  });
 });

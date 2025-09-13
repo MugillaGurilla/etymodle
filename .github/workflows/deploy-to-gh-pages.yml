@@ -15,22 +15,40 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  install-dependencies:
-    name: Install Dependencies
-    uses: MugillaGurilla/etymodle/.github/workflows/checkout-install-compile.yml@main
+  # install-dependencies:
+  #   name: Install Dependencies
+  #   uses: MugillaGurilla/etymodle/.github/workflows/checkout-install-compile.yml@main
+
+  # run-tests:
+  #   name: Run Tests
+  #   uses: MugillaGurilla/etymodle/.github/workflows/checkout-install-test.yml@main
 
   deploy:
     name: Deploy to GitHub Pages
-    needs: install-dependencies
+    # needs: install-dependencies
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          name: compiled
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: |
+          npm install
+          npx tsc --outDir dist
+
+      - name: Run all tests
+        run: |
+          npm install -g live-server
+          live-server --port=5500 --no-browser &
+          npx cypress run --config video=false
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

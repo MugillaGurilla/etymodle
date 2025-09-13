@@ -1,4 +1,4 @@
-import { sentencecase } from "../../helpers/helpers.js";
+import { lowercase, sentencecase } from "../../helpers/helpers.js";
 import { supportedLanguages } from "../../../data/supported-languages.js";
 
 import Game from "./game.js";
@@ -55,7 +55,7 @@ export default class Correcter {
 
   private handleGuess() : void {
     this.input = document.getElementById("guess-input") as HTMLInputElement;
-    this.guess = this.input.value?.trim();
+    this.guess = lowercase(this.input.value?.trim());
 
     if (this.matcher.match(this.guess) !== "exact") {
       this.matcher.prompt();

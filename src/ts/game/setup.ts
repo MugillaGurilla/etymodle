@@ -1,3 +1,5 @@
+import { lowercase } from "../../helpers/helpers.js";
+
 export default class Setup {
   private untranslated : string = "Gorta";
   private translated : string = "Famine, Privation";
@@ -24,10 +26,10 @@ export default class Setup {
     await fetch(('./answer/today.json'))
       .then((response) => response.json())
       .then((data) => {
-        this.untranslated = data.untranslated;
-        this.translated = data.translated;
-        this.language = data.language;
-        this.languageCode = data.languageCode;
+        this.untranslated = lowercase(data.untranslated);
+        this.translated = lowercase(data.translated);
+        this.language = lowercase(data.language);
+        this.languageCode = lowercase(data.languageCode);
         this.milestones.dataPrepared = true;
         console.log("Today's word data prepared.");
       })

@@ -9,14 +9,16 @@
     "outDir": "./dist",
     "rootDir": ".",
     "resolveJsonModule": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "types": [
+      "cypress",
+      "node"
+    ]
   },
   "include": [
-    // "src/scripts/**/*.ts",
     "src/**/*.ts",
     "src/**/*.json",
     "src/**/*.sh",
-    // "src/helpers/**/*.ts"
   ],
   "exclude": [
     "node_modules"
