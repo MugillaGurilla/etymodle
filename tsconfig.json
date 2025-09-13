@@ -12,10 +12,10 @@
     "moduleResolution": "node"
   },
   "include": [
-    "scripts/**/*.ts",
+    // "src/scripts/**/*.ts",
     "src/**/*.ts",
     "src/**/*.json",
-    "helpers/**/*.ts"
+    // "src/helpers/**/*.ts"
   ],
   "exclude": [
     "node_modules"

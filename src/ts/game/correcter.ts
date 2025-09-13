@@ -1,4 +1,4 @@
-import { lowercase, sentencecase } from "../../../helpers/helpers.js";
+import { sentencecase } from "../../helpers/helpers.js";
 import { supportedLanguages } from "../../../data/supported-languages.js";
 
 import Game from "./game.js";
@@ -64,6 +64,7 @@ export default class Correcter {
 
     if (this.isCorrect()) {
       alert("Correct!");
+      console.log("Correct!");
       return; 
     }
 

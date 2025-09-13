@@ -7,8 +7,8 @@ export default function moonAndCat() : void {
   if (!ctx) {
     throw new Error('Unable to get canvas context');
   }
-  const radius : number = 75
-  const buffer : number = 100
+  const radius : number = 50;
+  const buffer : number = 60;
 
   canvas.width = radius * 3 + buffer;
   canvas.height = radius * 3 + buffer;
@@ -24,8 +24,8 @@ export default function moonAndCat() : void {
   };
 
   const cat : Record<string, any> = {
-    x: canvas.width / 2 + 30,
-    y: canvas.height / 2 + 30,
+    x: canvas.width / 2 + 20,
+    y: canvas.height / 2 + 15,
     bodyRadius: 15,
     headRadius: 7,
     earHeight: 5,
@@ -65,7 +65,7 @@ export default function moonAndCat() : void {
 
     // Cut out crescent shape
     ctx.beginPath();
-    ctx.arc(moon.x + 30, moon.y - 20, moon.radius - 10, 0, 2 * Math.PI);
+    ctx.arc(moon.x + 20, moon.y - 15, moon.radius - 7, 0, 2 * Math.PI);
     // ctx.shadowColor = null;
     // ctx.shadowBlur = null;
     ctx.fillStyle = '#0f0f0feb';

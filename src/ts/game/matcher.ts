@@ -1,4 +1,4 @@
-import { lowercase, sentencecase } from "../../../helpers/helpers.js";
+import { lowercase, sentencecase } from "../../helpers/helpers.js";
 import { match } from "../types/types.js";
 
 import Correcter from "./correcter.js";
