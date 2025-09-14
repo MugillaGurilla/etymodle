@@ -10,7 +10,6 @@ jobs:
   generate-todays-answer:
     name: Generate Today's Answer
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -25,10 +24,11 @@ jobs:
         npm install
         npm install ts-node
         npx tsc --outDir dist
+        ls -R
     
     - name: Generate todays answer
       run: |
-        npx ts-node dist/scripts/new-word.js
+        npx ts-node dist/src/scripts/new-word.js
 
     - name: Commit and push changes, if necessary
       run: |
