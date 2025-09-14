@@ -11,7 +11,7 @@
     "clean": "rm -rf ./dist",
     "new-word": "npx ts-node dist/scripts/new-word.js",
     "old-word": "git checkout --  answer/today.json",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:ui": "cypress open",
+    "cypress:cli": "cypress run"
   }
 }

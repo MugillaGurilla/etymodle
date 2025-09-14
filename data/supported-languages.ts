@@ -1,6 +1,6 @@
 export const supportedLanguages : Array<string> = [
   "irish",
-  "Greek",
+  "greek",
   "arabic",
   "chinese",
   "japanese",
