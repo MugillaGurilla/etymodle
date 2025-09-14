@@ -37,7 +37,6 @@ class NewWord {
         }
 
         const targetLanguage = "en"; 
-        // const sourceLanguage = this.language?.slice(0, 2) || "auto";
         const sourceLanguage = "auto";
         const url = `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=${sourceLanguage}&tl=${targetLanguage}&q=${this.untranslated}`;
         
