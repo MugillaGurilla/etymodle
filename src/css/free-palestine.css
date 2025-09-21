@@ -1,0 +1,47 @@
+
+#free-palestine {
+  position: relative;
+  height: 1.5rem; 
+  border: 1px solid #000;
+  width: 100px;
+}
+
+#free-palestine .stripe {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 33.33%;
+}
+
+#free-palestine .stripe.black {
+  top: 0;
+  background-color: black;
+}
+
+#free-palestine .stripe.white {
+  padding-left: 32px;
+  width: calc(100% - 32px);
+  font-size: 0.6rem;
+  white-space: nowrap;
+  font-weight: bold;
+  top: 33.33%;
+  color: black;
+  background-color: white;
+}
+
+#free-palestine .stripe.green {
+  top: 66.66%;
+  background-color: green;
+}
+
+#free-palestine .triangle {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 1.5rem solid transparent;
+  border-bottom: 1.5rem solid transparent;
+  border-right: 1.5rem solid red;
+  transform: rotate(180deg);
+}
