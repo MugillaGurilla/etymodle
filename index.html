@@ -3,14 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./src/rain/css/index.css">
   <link rel="stylesheet" href="./src/css/root.css">
   <link rel="stylesheet" href="./src/css/index.css">
+  <link rel="stylesheet" href="./src/rain/css/index.css">
   <link rel="stylesheet" href="./src/css/game.css">
   <link rel="stylesheet" href="./src/css/free-palestine.css">
   <title>Etymodle</title>
 </head>
+<style>
+  .loading-area {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    z-index: 20;
+    font-size: larger;
+    line-height: 100vh;
+    font-weight: bold;
+    vertical-align: middle;
+    cursor: wait;
+  }
+</style>
 <body>
+  <div class="loading-area">Loading....</div>
   <canvas id="moon-cat" class="moon"></canvas>
   <div class="stars"></div>
   <div class="rain"></div>
@@ -40,12 +60,16 @@
     <div class="dev-info"><div class="version"></div></div>
     <div class="dev-info"><div class="dark-theme-toggle">🌗</div></div>
   </footer>
-  <script type="module" src="./dist/src/rain/init.js"></script>
+  <script>
+  </script>
   <script type="module">
     (async () => {
+      (await import('./dist/src/helpers/helpers.js?cachebust=' + new Date().getTime())).removeLoadingScreenOnLoad();
       await import('./dist/src/components/render.js');
       await import('./dist/src/ts/init.js');
     })();
-  </script>
+    </script>
+    <script type="module" src="./dist/src/rain/init.js">
+    </script>
 </body>
 </html>

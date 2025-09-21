@@ -27,7 +27,7 @@ export default class GameArea {
     return container;
   };
   
-  private render() {
+  private render() : void {
     const elements = document.querySelectorAll('GameArea');
     elements.forEach((el) => {
       const gameAreaElement = this.atom;

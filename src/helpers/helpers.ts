@@ -24,3 +24,23 @@ export const addStylesheet = (type: string, name: string) : void => {
     link.href = `./src/components/${type}s/${name}/${name}.css`;
     document.head.appendChild(link);
 }
+
+export const removeLoadingScreenOnLoad = () : void => {
+    const div = document.querySelector("div.loading-area") as HTMLElement;
+    if (!div) {
+        throw new Error("LoadingScreen: No div.loading-area found");
+    }
+    div.setAttribute("data-testid", "loading-area");
+    window.addEventListener('load', (event) => {
+        div.remove();
+            setTimeout(() => {
+        }, 1000);
+    });
+    div.addEventListener('click', (event) => {
+        div.remove();
+    });
+    setTimeout(() => {
+        div.textContent = "Click to Continue";
+        div.style.cursor = 'pointer';
+    }, 5000);
+}
