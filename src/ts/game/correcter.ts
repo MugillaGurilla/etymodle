@@ -4,13 +4,18 @@ import { supportedLanguages } from "../../../data/supported-languages.js";
 import Game from "./game.js";
 import Matcher from "./matcher.js";
 
+import ResultsArea from "../../components/organisms/ResultsArea/ResultsArea.js";
+import Results from "./results.js";
+
 export default class Correcter {
   private supportedLanguages : Array<string> = [];
   private language? : string;
   private languagecode? : string;
   private guess: string = "";
-  private maxGuesses? : number;
+  private currentGuesses : number = 0;
+  private maxGuesses : number;
   private matcher: Matcher;
+  private results: Results;
   private input: HTMLInputElement | null = null;
 
   public get(key: "supportedLanguages") : any {
@@ -29,12 +34,12 @@ export default class Correcter {
     this.languagecode = game.setup.get("languageCode");
     this.maxGuesses = game.setup.get("maxGuesses");
     this.matcher = new Matcher(this);
+    this.results = new Results(game);
   };
 
   async init() : Promise<void> {
     await this.fetchSupportedLanguages();
     this.addGuessListener();
-    // this.correctWord();
   };
 
   private addGuessListener() : void{
@@ -53,7 +58,7 @@ export default class Correcter {
     });
   }
 
-  private handleGuess() : void {
+  private async handleGuess() : Promise<void> {
     this.input = document.getElementById("guess-input") as HTMLInputElement;
     this.guess = lowercase(this.input.value?.trim());
 
@@ -63,7 +68,7 @@ export default class Correcter {
     }
 
     if (this.isCorrect()) {
-      alert("Correct!");
+      this.results.win();
       console.log("Correct!");
       return; 
     }
@@ -71,9 +76,15 @@ export default class Correcter {
     if (this.guess) {
       this.addGuess();
     }
+    
+    if (this.currentGuesses >= this.maxGuesses) {
+      this.results.lose();
+      console.log("Out of guesses!");
+      return;
+    }
   }
-
-
+  
+  
   private addGuess() : void {
     // This can be React-ified later
     const guessesContainer : HTMLElement | null = document.querySelector(".guesses");
@@ -88,6 +99,8 @@ export default class Correcter {
       throw new Error("Input element not found, unable to clear.");
     }
     this.input.value = "";
+    console.log(this.currentGuesses);
+    this.currentGuesses += 1;
   }
 
   private isCorrect() : boolean {

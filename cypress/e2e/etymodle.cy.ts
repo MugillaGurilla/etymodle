@@ -1,24 +1,22 @@
 import { supportedLanguages } from "../../data/supported-languages.js";
-import { sentencecase } from "../../src/helpers/helpers.js";
+import { lowercase, sentencecase } from "../../src/helpers/helpers.js";
 
 describe("Etymodle Test Dump", () => { 
   it("loads homepage", () => {
-    cy.window().then((win) => {
-      cy.spy(win, 'alert').as('alertSpy');
-    });
-    const stub = cy.stub()
-    cy.on ('window:alert', stub)
-    
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
     cy.fixture("../../answer/today.json").then((answer) => {
       cy.log(answer);
       cy.get(".word-display").should("have.text", answer.untranslated);
       cy.get("#guess-input").type(answer.language, { force: true });
+      cy.get("[data-testid=\"results-area\"]").should("not.exist");
       cy.get("#submit-guess").click({ force: true });
-      cy.then(() => {                       
-        expect(stub.getCall(0)).to.be.calledWith('Correct!');
-      });
+      cy.get("[data-testid=\"results-area\"]").should("exist");
+      cy.get("[data-testid=\"well-done\"]").should("exist");
+      cy.get("[data-testid=\"meaning\"]").should("exist");
+      cy.get("[data-testid=\"meaning\"]").should("contain.text", lowercase(answer.translated));
+      cy.get("[data-testid=\"language\"]").should("exist");
+      cy.get("[data-testid=\"language\"]").should("contain.text", answer.language);
     });
   });
 
@@ -55,42 +53,55 @@ describe("Etymodle Test Dump", () => {
   });
 
   it("correct, lowercase input is accepted", () => {
-    const stub = cy.stub()
-    cy.on ('window:alert', stub)
-    
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
-    cy.on('window:alert', msg => {
-      expect(msg).to.contains("Correct!");
-    });
     cy.fixture("../../answer/today.json").then((answer) => {
       cy.log(answer);
-      cy.get(".word-display").should("have.text", answer.untranslated);
+      cy.get("[data-testid=\"word-display\"]").should("have.text", answer.untranslated);
       cy.get("#guess-input").type(answer.language.toLowerCase(), { force: true });
       cy.get("#submit-guess").click({ force: true });
-      cy.then(() => {                       
-        expect(stub.getCall(0)).to.be.calledWith('Correct!');
-      });
+      cy.get("[data-testid=\"results-area\"]").should("exist");
+      cy.get("[data-testid=\"well-done\"]").should("exist");
+      cy.get("[data-testid=\"meaning\"]").should("exist");
+      cy.get("[data-testid=\"meaning\"]").should("contain.text", lowercase(answer.translated));
+      cy.get("[data-testid=\"language\"]").should("exist");
+      cy.get("[data-testid=\"language\"]").should("contain.text", answer.language);
     });
   });
 
   it("correct, uppercase input is accepted", () => {
-    const stub = cy.stub()
-    cy.on ('window:alert', stub)
-
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
-    cy.on('window:alert', msg => {
-      expect(msg).to.contains("Correct!");
-    });
     cy.fixture("../../answer/today.json").then((answer) => {
       cy.log(answer);
       cy.get(".word-display").should("have.text", answer.untranslated);
       cy.get("#guess-input").type(answer.language.toUpperCase(), { force: true });
       cy.get("#submit-guess").click({ force: true });
-      cy.then(() => {                       
-        expect(stub.getCall(0)).to.be.calledWith('Correct!');
-      });
+      cy.get("[data-testid=\"results-area\"]").should("exist");
+      cy.get("[data-testid=\"well-done\"]").should("exist");
+      cy.get("[data-testid=\"meaning\"]").should("exist");
+      cy.get("[data-testid=\"meaning\"]").should("contain.text", lowercase(answer.translated));
+      cy.get("[data-testid=\"language\"]").should("exist");
+      cy.get("[data-testid=\"language\"]").should("contain.text", answer.language);
     });
+  });
+
+  it("max guesses is  enforeced", () => {
+    cy.visit("http://localhost:5500");
+    cy.contains("Etymodle");
+    for (let i = 0; i < 6; i++) {
+      cy.get("#guess-input").type("Japanese");
+      cy.get("#submit-guess").click();
+      if (i < 5) {
+        cy.get("#guess-input").should("have.value", "");
+      }
+    }
+    cy.get("[data-testid=\"results-area\"]").should("exist");
+    cy.get("[data-testid=\"try-again\"]").should("exist");
+    cy.get("[data-testid=\"well-done\"]").should("not.exist");
+    cy.get("[data-testid=\"meaning\"]").should("exist");
+    cy.get("[data-testid=\"language\"]").should("exist");
+    cy.get("#guess-input").should("not.exist");
+    cy.get("#submit-guess").should("not.exist");
   });
 });

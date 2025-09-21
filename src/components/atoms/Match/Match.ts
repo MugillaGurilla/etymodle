@@ -6,7 +6,6 @@ export default class Match {
   constructor(options : Record<string, string> = {}) {
     addStylesheet('atom', 'Match');
     this.atom = this.create();
-    // this.render();
   }
   
   private create() : HTMLDivElement {

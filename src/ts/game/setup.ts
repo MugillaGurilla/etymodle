@@ -8,7 +8,7 @@ export default class Setup {
   private maxGuesses : number = 6;
   private milestones : Record<string, boolean> = {};
 
-  public get(key: "language" | "languageCode" | "maxGuesses") : any {
+  public get(key: "language" | "languageCode" | "maxGuesses" | "translated") : any {
     const value : any = this[key];
     if (value === undefined) {
       throw new Error(`Property ${key} does not exist on Setup.`);

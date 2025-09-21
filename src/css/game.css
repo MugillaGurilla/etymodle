@@ -18,11 +18,6 @@
   }
 }
 
-/* .game-area {
-  padding: 20px;
-  text-align: center;
-} */
-
 header {
   color: var(--highlight-color);
 }
@@ -30,70 +25,4 @@ header {
 game {
   max-height: 70vh;
   overflow-y: auto;
-  /* width: var(--max-game-area-width); */
 }
-
-/* .word-display {
-  font-size: 2em;
-  margin-bottom: 20px;
-  letter-spacing: 5px;
-  color: var(--highlight-color);
-} */
-
-/* .input-area {
-  display: grid;
-  gap: 10px;
-  justify-content: center;
-} */
-
-/* #guess-input {
-  padding: 10px;
-  font-size: 1em;
-  border: 2px solid var(--highlight-color);
-} */
-
-/* #submit-guess {
-  padding: 10px 20px;
-  font-size: 1em;
-  background-color: var(--green);
-  color: var(--highlight-color);
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#submit-guess:hover {
-  opacity: 0.8;
-  cursor: pointer;
-} */
-/* 
-.guesses {
-  margin: 20px auto;
-  display: flex;
-  max-width: 300px;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: start; 
-  gap: 10px;
-  min-height: 300px;
-}
-
-.guess {
-  padding: 10px;
-  max-height: 1.5rem;;
-  border: 1px solid var(--highlight-color);
-  border-radius: 5px;
-  background-color: var(--background-color);
-  color: var(--highlight-color);
-} */
-
-/* .match {
-  padding-top: 10px;
-  margin: auto;
-  font-size: 1.2em;
-  color: var(--highlight-color);
-  font-weight: bold;
-  min-height: 50px;
-  max-width: 300px
-
-} */
