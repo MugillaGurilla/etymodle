@@ -1,5 +1,6 @@
 import { supportedLanguages } from "../../data/supported-languages.js";
 import { lowercase, sentencecase } from "../../src/helpers/helpers.js";
+import { coolLetters } from "../../data/loading-screen.js";
 
 describe("Etymodle Test Dump", () => { 
   it("loads homepage", () => {
@@ -119,10 +120,9 @@ describe("Etymodle Test Dump", () => {
     cy.get("#submit-guess").should("not.exist");
   });
 
-  it("loading screen is loaded, remnoved", () => {
+  it("loading screen is loaded, removed", () => {
     cy.visit("http://localhost:5500");
     cy.get("div.loading-area").should("exist");
-    const coolLetters = ["അ", "ф", "क", "ბ", "வெ", "z", "ä", "λ", "ش"];
     cy.get("div.loading-area").should(($element) => {
       expect(coolLetters).to.include($element.text());
     });

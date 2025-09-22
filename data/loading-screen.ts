@@ -1,0 +1,1 @@
+export const coolLetters = ["അ", "ф", "क", "ბ", "வெ", "z", "ä", "λ", "ش"];

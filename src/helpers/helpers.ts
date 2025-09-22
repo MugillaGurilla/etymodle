@@ -1,3 +1,5 @@
+import { coolLetters } from '../../data/loading-screen.js';
+
 export const randomElement = (array : Array<any>) : any => {
     return array[Math.floor(Math.random() * array.length)];
 }
@@ -31,7 +33,6 @@ export const removeLoadingScreenOnLoad = () : void => {
         throw new Error("LoadingScreen: No div.loading-area found");
     }
     div.setAttribute("data-testid", "loading-area");
-    const coolLetters = ["അ", "ф", "क", "ბ", "வெ", "z", "ä", "λ", "ش"];
     for (let i = 0; i < 10; i++) {
         setTimeout(() => {
             div.textContent = randomElement(coolLetters);
