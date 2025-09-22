@@ -22,15 +22,16 @@
     text-align: center;
     font-family: 'DM Sans', sans-serif;
     z-index: 20;
-    font-size: larger;
+    font-size: 4rem;
     line-height: 100vh;
     font-weight: bold;
     vertical-align: middle;
     cursor: wait;
+    white-space: wrap;
   }
 </style>
 <body>
-  <div class="loading-area">Loading....</div>
+  <div class="loading-area"></div>
   <canvas id="moon-cat" class="moon"></canvas>
   <div class="stars"></div>
   <div class="rain"></div>
@@ -57,7 +58,7 @@
       <div class="stripe black"></div>
       <div class="triangle"></div>
     </div>
-    <div class="dev-info"><div class="version"></div></div>
+    <!-- <div class="dev-info"><div class="version"></div></div> -->
     <div class="dev-info"><div class="dark-theme-toggle">🌗</div></div>
   </footer>
   <script>

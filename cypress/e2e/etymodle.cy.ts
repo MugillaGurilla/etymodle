@@ -122,7 +122,10 @@ describe("Etymodle Test Dump", () => {
   it("loading screen is loaded, remnoved", () => {
     cy.visit("http://localhost:5500");
     cy.get("div.loading-area").should("exist");
-    cy.get("div.loading-area").should("have.text", "Loading....");
+    const coolLetters = ["അ", "ф", "क", "ბ", "வெ", "z", "ä", "λ", "ش"];
+    cy.get("div.loading-area").should(($element) => {
+      expect(coolLetters).to.include($element.text());
+    });
     cy.get("div.loading-area").click();
     cy.get("div.loading-area").should("not.exist");
   });

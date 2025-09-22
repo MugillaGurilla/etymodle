@@ -31,16 +31,20 @@ export const removeLoadingScreenOnLoad = () : void => {
         throw new Error("LoadingScreen: No div.loading-area found");
     }
     div.setAttribute("data-testid", "loading-area");
-    window.addEventListener('load', (event) => {
-        div.remove();
-            setTimeout(() => {
-        }, 1000);
-    });
+    const coolLetters = ["അ", "ф", "क", "ბ", "வெ", "z", "ä", "λ", "ش"];
+    for (let i = 0; i < 10; i++) {
+        setTimeout(() => {
+            div.textContent = randomElement(coolLetters);
+        }, i * 500);
+    };
     div.addEventListener('click', (event) => {
         div.remove();
     });
     setTimeout(() => {
-        div.textContent = "Click to Continue";
+        div.addEventListener('click', (event) => {
+            div.remove();
+        });
+        div.textContent = "...";
         div.style.cursor = 'pointer';
     }, 5000);
 }
