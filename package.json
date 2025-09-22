@@ -9,8 +9,8 @@
   "scripts": {
     "compile": "npx tsc",
     "clean": "rm -rf ./dist",
-    "new-word": "npx ts-node dist/scripts/new-word.js",
-    "old-word": "git checkout --  answer/today.json",
+    "word:new": "npx ts-node dist/src/scripts/new-word.js",
+    "word:old": "git checkout --  answer/today.json",
     "cypress:ui": "cypress open",
     "cypress:cli": "cypress run"
   }
