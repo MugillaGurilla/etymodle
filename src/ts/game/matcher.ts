@@ -1,11 +1,13 @@
+import Guess from "../../components/active/Guess/Guess.js";
 import { lowercase, sentencecase } from "../../helpers/helpers.js";
-import { match } from "../types/types.js";
+import { Match } from "../types/types.js";
 
 import Correcter from "./correcter.js";
 
 export default class Matcher {
   private correcter: Correcter;
-  private matching : match = "none";
+  private matching : Match = "none";
+  private foundMatch = false;
   private guess : string = "";
   private matchingLanguage : string = "";
   
@@ -13,7 +15,7 @@ export default class Matcher {
     this.correcter = correcter;
   }
 
-  match(guess : string) : match {
+  match(guess : string) : Match {
     this.reset();
     this.guess = lowercase(guess);
 
@@ -22,26 +24,7 @@ export default class Matcher {
       this.matchingLanguage = sentencecase(this.guess);
       return this.matching;
     }
-
-    const guessAsChars : Array<string> = lowercase(this.guess).split("");
-
-    this.correcter.get("supportedLanguages").forEach((lang : string) => {
-      const languageAsChars : Array<string> = lang.split("");
-      let matchCount : number = 0;
-
-      languageAsChars.forEach((char, index) => {
-        if (char === guessAsChars[index]) {
-          matchCount++;
-        }
-      });   
-
-      const matchPercentage : number = (matchCount / languageAsChars.length) * 100;
-      if (matchPercentage >= 75) {
-        this.matching = "close";
-        this.matchingLanguage = lang;
-        return;
-      }
-    });
+    this.matchPercentage();
     return this.matching;
   };
 
@@ -65,48 +48,38 @@ export default class Matcher {
     this.matching = "none";
     this.guess = "";
     this.matchingLanguage = "";
-    this.removeAllMatchInfo();
+    new Guess({reset: "true"});
   }
 
   private addCloseMatchInfo() : void {
-    // This can be React-ified later
-    const matchInfo : HTMLElement | null = document.getElementById("match-info");
-    const matchCountry : HTMLElement | null = document.getElementById("match-country");
-    if (!matchInfo) {
-      throw new Error("Match info span not found.");
-    }
-    if (!matchCountry) {
-      throw new Error("Match country span not found.");
-    }
-    matchInfo.textContent = "Did you mean: ";
-    matchCountry.textContent = sentencecase(this.matchingLanguage) + "?";
+    new Guess({match: "close", language: this.matchingLanguage});
   }
 
   private addNoMatchInfo() : void {
-    // This can be React-ified later
-    const matchInfo : HTMLElement | null = document.getElementById("match-info");
-    const matchCountry : HTMLElement | null = document.getElementById("match-country");
-    if (!matchInfo) {
-      throw new Error("Match info span not found.");
-    }
-    if (!matchCountry) {
-      throw new Error("Match country span not found.");
-    }
-    matchInfo.textContent = "No close matches found for: ";
-    matchCountry.textContent = sentencecase(this.guess);
+    new Guess({match: "none", language: this.guess});
   }
 
-  private removeAllMatchInfo() : void {
-    // This can be React-ified later
-    const matchInfo : HTMLElement | null = document.getElementById("match-info");
-    const matchCountry : HTMLElement | null = document.getElementById("match-country");
-    if (!matchInfo) {
-      throw new Error("Match info span not found.");
-    }
-    if (!matchCountry) {
-      throw new Error("Match country span not found.");
-    }
-    matchInfo.textContent = "";
-    matchCountry.textContent = "";
-  }
+  private matchPercentage() {
+    const guessAsChars : Array<string> = lowercase(this.guess).split("");
+
+    this.correcter.get("supportedLanguages").forEach((lang : string) => {
+      if (this.foundMatch) { return; }
+      const languageAsChars : Array<string> = lang.split("");
+      let matchCount : number = 0;
+
+      languageAsChars.forEach((char, index) => {
+        if (this.foundMatch) { return; }
+        if (char === guessAsChars[index]) {
+          matchCount++;
+        }
+      });   
+
+      const matchPercentage : number = (matchCount / languageAsChars.length) * 100;
+      if (matchPercentage >= 75) {
+        this.matching = "close";
+        this.matchingLanguage = lang;
+        this.foundMatch = true;
+      }
+    });
+  };
 }

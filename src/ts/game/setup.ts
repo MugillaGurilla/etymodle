@@ -1,4 +1,4 @@
-import { lowercase } from "../../helpers/helpers.js";
+import { lowercase, sentencecase } from "../../helpers/helpers.js";
 
 export default class Setup {
   private untranslated : string = "Gorta";
@@ -42,7 +42,7 @@ export default class Setup {
     if (!this.milestones.dataPrepared) {
       throw new Error("Data not prepared yet.");
     }
-    document.getElementsByClassName("word-display")[0].textContent = this.untranslated;
+    document.getElementsByClassName("word-display")[0].textContent = sentencecase(this.untranslated);
     console.log("Today's word pushed to display.");
   }
 };

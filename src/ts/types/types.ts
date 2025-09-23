@@ -1,1 +1,1 @@
-export type match = "close" | "none" | "exact";
+export type Match = "close" | "none" | "exact";

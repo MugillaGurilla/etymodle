@@ -7,7 +7,7 @@ describe("Etymodle Test Dump", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
     cy.get("div.loading-area").should("exist");
-    cy.get("div.loading-area").click();
+    cy.get("div.loading-area").click({ timeout: 5000 });
     cy.fixture("../../answer/today.json").then((answer) => {
       cy.log(answer);
       cy.get(".word-display").should("have.text", answer.untranslated);
@@ -27,7 +27,7 @@ describe("Etymodle Test Dump", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
     cy.get("div.loading-area").should("exist");
-    cy.get("div.loading-area").click();
+    cy.get("div.loading-area").click({ timeout: 5000 });
     cy.fixture("../../answer/today.json").then((answer) => {
       const langauges = supportedLanguages.filter(item => item !== answer.language);
       const wrongLanguage = langauges[0];
@@ -41,7 +41,7 @@ describe("Etymodle Test Dump", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
     cy.get("div.loading-area").should("exist");
-    cy.get("div.loading-area").click();
+    cy.get("div.loading-area").click({ timeout: 5000 });
     cy.get("#guess-input").type("Japanes")
     cy.get("#submit-guess").click();
     cy.get(".match").should("contain", sentencecase("Japanese"));
@@ -54,18 +54,30 @@ describe("Etymodle Test Dump", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
     cy.get("div.loading-area").should("exist");
-    cy.get("div.loading-area").click();
-    cy.get("#guess-input").type("asdfghjkl")
-    cy.get("#submit-guess").click();
-    cy.get("[data-testid=\"match-info\"]").should("contain", "No close matches found for: ");
+    cy.get("div.loading-area").click({ timeout: 5000 });
+    cy.get("#guess-input").type("asdfghjkl", { force: true });
+    cy.get("#submit-guess").click({ force: true });
+    cy.get("[data-testid=\"match-info\"]").should("contain", "Not found in database: ");
     cy.get("[data-testid=\"match-country\"]").should("contain", "Asdfghjkl");
+  });
+  
+  it("Real, but unsupported, language is not accepted", () => {
+    cy.visit("http://localhost:5500");
+    cy.contains("Etymodle");
+    cy.get("div.loading-area").should("exist");
+    cy.get("div.loading-area").click({ timeout: 5000 });
+    cy.get("#guess-input").type("French");
+    cy.get("#submit-guess").click();
+    cy.get(".guesses").should("not.contain", "French");
+    cy.get("[data-testid=\"match-info\"]").should("contain", "Not found in database: ");
+    cy.get("[data-testid=\"match-country\"]").should("contain", "French");
   });
 
   it("correct, lowercase input is accepted", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
     cy.get("div.loading-area").should("exist");
-    cy.get("div.loading-area").click();
+    cy.get("div.loading-area").click({ timeout: 5000 });
     cy.fixture("../../answer/today.json").then((answer) => {
       cy.log(answer);
       cy.get("[data-testid=\"word-display\"]").should("have.text", answer.untranslated);
@@ -84,7 +96,7 @@ describe("Etymodle Test Dump", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
     cy.get("div.loading-area").should("exist");
-    cy.get("div.loading-area").click();
+    cy.get("div.loading-area").click({ timeout: 5000 });
     cy.fixture("../../answer/today.json").then((answer) => {
       cy.log(answer);
       cy.get(".word-display").should("have.text", answer.untranslated);
@@ -103,7 +115,7 @@ describe("Etymodle Test Dump", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
     cy.get("div.loading-area").should("exist");
-    cy.get("div.loading-area").click();
+    cy.get("div.loading-area").click({ timeout: 5000 });
     for (let i = 0; i < 6; i++) {
       cy.get("#guess-input").type("Japanese");
       cy.get("#submit-guess").click();
@@ -126,7 +138,7 @@ describe("Etymodle Test Dump", () => {
     cy.get("div.loading-area").should(($element) => {
       expect(coolLetters).to.include($element.text());
     });
-    cy.get("div.loading-area").click();
+    cy.get("div.loading-area").click({ timeout: 5000 });
     cy.get("div.loading-area").should("not.exist");
   });
 });

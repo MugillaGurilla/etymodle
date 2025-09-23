@@ -42,10 +42,6 @@ export const removeLoadingScreenOnLoad = () : void => {
         div.remove();
     });
     setTimeout(() => {
-        div.addEventListener('click', (event) => {
-            div.remove();
-        });
-        div.textContent = "...";
-        div.style.cursor = 'pointer';
+        div.remove();
     }, 5000);
 }
