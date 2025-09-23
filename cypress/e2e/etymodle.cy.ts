@@ -6,11 +6,12 @@ describe("Etymodle Test Dump", () => {
   it("loads homepage", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
+    cy.wait(200);
     cy.get("div.loading-area").should("exist");
     cy.get("div.loading-area").click({ timeout: 5000 });
     cy.fixture("../../answer/today.json").then((answer) => {
       cy.log(answer);
-      cy.get(".word-display").should("have.text", answer.untranslated);
+      cy.get(".word-display").should("have.text", sentencecase(answer.untranslated));
       cy.get("#guess-input").type(answer.language, { force: true });
       cy.get("[data-testid=\"results-area\"]").should("not.exist");
       cy.get("#submit-guess").click({ force: true });
@@ -26,6 +27,7 @@ describe("Etymodle Test Dump", () => {
   it("wrong guess, valid language is registered", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
+    cy.wait(200);
     cy.get("div.loading-area").should("exist");
     cy.get("div.loading-area").click({ timeout: 5000 });
     cy.fixture("../../answer/today.json").then((answer) => {
@@ -40,6 +42,7 @@ describe("Etymodle Test Dump", () => {
   it("close match is prompted", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
+    cy.wait(200);
     cy.get("div.loading-area").should("exist");
     cy.get("div.loading-area").click({ timeout: 5000 });
     cy.get("#guess-input").type("Japanes")
@@ -53,6 +56,7 @@ describe("Etymodle Test Dump", () => {
   it("nonsense input is prompted", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
+    cy.wait(200);
     cy.get("div.loading-area").should("exist");
     cy.get("div.loading-area").click({ timeout: 5000 });
     cy.get("#guess-input").type("asdfghjkl", { force: true });
@@ -64,6 +68,7 @@ describe("Etymodle Test Dump", () => {
   it("Real, but unsupported, language is not accepted", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
+    cy.wait(200);
     cy.get("div.loading-area").should("exist");
     cy.get("div.loading-area").click({ timeout: 5000 });
     cy.get("#guess-input").type("French");
@@ -76,11 +81,12 @@ describe("Etymodle Test Dump", () => {
   it("correct, lowercase input is accepted", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
+    cy.wait(200);
     cy.get("div.loading-area").should("exist");
     cy.get("div.loading-area").click({ timeout: 5000 });
     cy.fixture("../../answer/today.json").then((answer) => {
       cy.log(answer);
-      cy.get("[data-testid=\"word-display\"]").should("have.text", answer.untranslated);
+      cy.get("[data-testid=\"word-display\"]").should("have.text", sentencecase(answer.untranslated));
       cy.get("#guess-input").type(answer.language.toLowerCase(), { force: true });
       cy.get("#submit-guess").click({ force: true });
       cy.get("[data-testid=\"results-area\"]").should("exist");
@@ -95,11 +101,12 @@ describe("Etymodle Test Dump", () => {
   it("correct, uppercase input is accepted", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
+    cy.wait(200);
     cy.get("div.loading-area").should("exist");
     cy.get("div.loading-area").click({ timeout: 5000 });
     cy.fixture("../../answer/today.json").then((answer) => {
       cy.log(answer);
-      cy.get(".word-display").should("have.text", answer.untranslated);
+      cy.get(".word-display").should("have.text", sentencecase(answer.untranslated));
       cy.get("#guess-input").type(answer.language.toUpperCase(), { force: true });
       cy.get("#submit-guess").click({ force: true });
       cy.get("[data-testid=\"results-area\"]").should("exist");
@@ -111,9 +118,10 @@ describe("Etymodle Test Dump", () => {
     });
   });
 
-  it("max guesses is  enforeced", () => {
+  it("max guesses is enforced", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
+    cy.wait(200);
     cy.get("div.loading-area").should("exist");
     cy.get("div.loading-area").click({ timeout: 5000 });
     for (let i = 0; i < 6; i++) {
@@ -131,14 +139,35 @@ describe("Etymodle Test Dump", () => {
     cy.get("#guess-input").should("not.exist");
     cy.get("#submit-guess").should("not.exist");
   });
-
+  
   it("loading screen is loaded, removed", () => {
     cy.visit("http://localhost:5500");
+    cy.contains("Etymodle");
+    cy.wait(200);
     cy.get("div.loading-area").should("exist");
     cy.get("div.loading-area").should(($element) => {
       expect(coolLetters).to.include($element.text());
     });
     cy.get("div.loading-area").click({ timeout: 5000 });
     cy.get("div.loading-area").should("not.exist");
+  });
+  
+  it("help screen is loaded, toggles", () => {
+    cy.visit("http://localhost:5500");
+    cy.contains("Etymodle");
+    cy.wait(500);
+    cy.get("div.loading-area").should("exist");
+    cy.get("div.loading-area").click();
+    cy.get("div.loading-area").should("not.exist");
+    cy.get("div.help").should("exist");
+    cy.get("div.help-container").should("have.class", "hidden");
+    cy.get("div.help-icon").should("exist");
+    cy.get("div.help-icon").click({ force: true });
+    cy.get("div.help-container").should("be.visible");
+    cy.get("h2.instructions-header").should("be.visible");
+    cy.get("div.instructions-body").should("be.visible");
+    cy.get("h2.instructions-header").should("contain.text", "How To Play");
+    cy.get("div.help-icon").click({ force: true });
+    cy.get("div.help-container").should("have.class", "hidden");
   });
 });

@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./src/css/index.css">
   <link rel="stylesheet" href="./src/rain/css/index.css">
   <link rel="stylesheet" href="./src/css/game.css">
+  <link rel="stylesheet" href="./src/css/help.css">
   <link rel="stylesheet" href="./src/css/free-palestine.css">
   <title>Etymodle</title>
 </head>
@@ -21,7 +22,7 @@
     color: white;
     text-align: center;
     font-family: 'DM Sans', sans-serif;
-    z-index: 20;
+    z-index: 50;
     font-size: 4rem;
     line-height: 100vh;
     font-weight: bold;
@@ -38,10 +39,18 @@
   <div id="lightning-container"></div>
   <div id="shooting-stars-container"></div>
   <div class="container">
+    <div class="help">
+      <div class="help-icon" tabindex="0">ℹ</div>
+      <div class="help-container hidden">
+        <h2 class="instructions instructions-header"></h2>
+        <div class="instructions instructions-body"></div>
+        <div class="dev-info"><div class="dark-theme-toggle">☾</div></div>
+      </div>
+    </div>
     <game>
       <header>
         <h1>Etymodle</h1>
-        <h3>Guess the language</h2>
+        <h3>Guess the language</h3>
       </header>
       <main>
         <GameArea></GameArea>
@@ -59,7 +68,6 @@
       <div class="triangle"></div>
     </div>
     <!-- <div class="dev-info"><div class="version"></div></div> -->
-    <div class="dev-info"><div class="dark-theme-toggle">🌗</div></div>
   </footer>
   <script>
   </script>

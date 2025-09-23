@@ -5,23 +5,20 @@ body {
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  margin: 10px;
+  margin: 30px;
   padding: 5px 10px;
-  background-color: var(--background-color);
-  color: var(--highlight-color);
-  border-radius: 5px;
-  z-index: 10;
-  display: flex;
 }
 
 footer > div {
   margin-right: 10px;
 }
 
-.dev-info {
+
+.hidden {
+  display: none;
+}
+
+/* .dev-info {
   background-color: var(--highlight-color);
   padding: 10px 25px;
   border-radius: 3px;
@@ -32,7 +29,7 @@ footer > div {
 .dev-info > div {
   color: var(--background-color);
   font-size: 0.75rem;
-}
+} */
 
 .dark-theme-toggle {
   cursor: pointer;
