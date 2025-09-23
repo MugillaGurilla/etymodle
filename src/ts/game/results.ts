@@ -1,6 +1,6 @@
 import Game from "./game.js";
 
-import ResultsArea from "../../components/organisms/ResultsArea/ResultsArea.js";
+import ResultsArea from "../../components/primary/organisms/ResultsArea/ResultsArea.js";
 
 export default class Results {
   private language : string;

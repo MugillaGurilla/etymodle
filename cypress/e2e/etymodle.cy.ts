@@ -65,7 +65,7 @@ describe("Etymodle Test Dump", () => {
     cy.get("[data-testid=\"match-country\"]").should("contain", "Asdfghjkl");
   });
   
-  it("Real, but unsupported, language is not accepted", () => {
+  it("real, but unsupported, language is not accepted", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
     cy.wait(200);
@@ -152,7 +152,7 @@ describe("Etymodle Test Dump", () => {
     cy.get("div.loading-area").should("not.exist");
   });
   
-  it.only("help screen is loaded, toggles", () => {
+  it("help screen is loaded, toggles", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
     cy.wait(500);

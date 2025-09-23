@@ -1,4 +1,4 @@
-import Guess from "../../components/active/Guess/Guess.js";
+import Guess from "../../components/secondary/atoms/Guess/Guess.js";
 import { lowercase, sentencecase } from "../../helpers/helpers.js";
 import { Match } from "../types/types.js";
 

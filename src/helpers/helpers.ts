@@ -20,10 +20,10 @@ export const removeFromArray = (array: Array<any>, specific: any) : Array<any> =
     return array.filter(item => item !== specific);
 }
 
-export const addStylesheet = (type: string, name: string) : void => {
+export const addStylesheet = (type: string, name: string, load: string) : void => {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = `./src/components/${type}s/${name}/${name}.css`;
+    link.href = `./src/components/${load}/${type}s/${name}/${name}.css`;
     document.head.appendChild(link);
 }
 
