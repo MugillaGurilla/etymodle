@@ -152,22 +152,22 @@ describe("Etymodle Test Dump", () => {
     cy.get("div.loading-area").should("not.exist");
   });
   
-  it("help screen is loaded, toggles", () => {
+  it.only("help screen is loaded, toggles", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
     cy.wait(500);
     cy.get("div.loading-area").should("exist");
     cy.get("div.loading-area").click();
     cy.get("div.loading-area").should("not.exist");
-    cy.get("div.help").should("exist");
-    cy.get("div.help-container").should("have.class", "hidden");
+    cy.get("div.help-area").should("exist");
+    cy.get("div.help-modal").should("have.class", "hidden");
     cy.get("div.help-icon").should("exist");
     cy.get("div.help-icon").click({ force: true });
-    cy.get("div.help-container").should("be.visible");
+    cy.get("div.help-modal").should("be.visible");
     cy.get("h2.instructions-header").should("be.visible");
     cy.get("div.instructions-body").should("be.visible");
     cy.get("h2.instructions-header").should("contain.text", "How To Play");
     cy.get("div.help-icon").click({ force: true });
-    cy.get("div.help-container").should("have.class", "hidden");
+    cy.get("div.help-modal").should("have.class", "hidden");
   });
 });

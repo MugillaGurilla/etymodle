@@ -6,7 +6,6 @@ export default class InputArea {
   public atom: HTMLDivElement;
 
   constructor(options: Record<string, string> = {}) {
-    // addStylesheet("./src/components/molecules/InputArea/InputArea.css");
     addStylesheet("molecule", "InputArea");
     this.atom = this.create(options);
   }

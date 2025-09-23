@@ -1,0 +1,14 @@
+.instructions {
+  margin: 10px 0;
+  padding: 0 20px;
+}
+
+.instructions-header {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 10px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 2px solid var(--green);
+}

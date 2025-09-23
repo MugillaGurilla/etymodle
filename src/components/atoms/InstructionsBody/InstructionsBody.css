@@ -1,0 +1,53 @@
+@media screen and (min-width: 1200px) {
+  .instructions-body {
+  }
+
+  .instructions-body > ol > li {
+    margin: 15px 0;
+    font-size: 1.25rem;
+  }
+  
+  .instructions-body > ol {
+    padding: 10px 100px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1199px) {
+  .instructions-body {
+  }
+
+  .instructions-body > ol > li {
+    margin: 15px 0;
+    font-size: 1.25rem;
+  }
+
+  .instructions-body > ol {
+    padding: 10px 50px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .instructions-body {
+  }
+  
+  .instructions-body > ol > li {
+    margin: 10px 0;
+    font-size: 1rem;
+  }
+
+  .instructions-body > ol {
+    text-align: left;
+    list-style: disclosure-open;
+    padding: 10px 10px;
+  }
+}
+
+.instructions-body > ol {
+  text-align: left;
+  list-style: disclosure-open;
+}
+
+li::marker {
+  color: var(--red);
+  font-weight: bold;
+}

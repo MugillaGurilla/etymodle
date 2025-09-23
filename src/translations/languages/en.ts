@@ -15,5 +15,8 @@ export const en = {
     3: "Type your guess into the input box and press submit.",
     4: "???",
     5: "No profit. Eat the rich! Free Palestine."
-  } as Record<string, string>
+  } as Record<string, string>,
+  helpIcon: 'ℹ',
+  toggleThemeTitle: 'Toggle Theme',
+  toggleTheme: "☾"
 }

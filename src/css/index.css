@@ -25,12 +25,12 @@ footer > div {
 }
 
 .version, 
-.dark-theme-toggle,
+.theme-toggle,
 .dev-info > div {
   color: var(--background-color);
   font-size: 0.75rem;
 } */
 
-.dark-theme-toggle {
+.theme-toggle {
   cursor: pointer;
 }

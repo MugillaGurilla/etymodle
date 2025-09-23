@@ -8,7 +8,7 @@ export default class Help {
   private instructions : Record<string, HTMLElement> = {}
 
   constructor() {
-    this.container = document.querySelector('.help-container') as HTMLDivElement;
+    this.container = document.querySelector('.help-modal') as HTMLDivElement;
     this.icon = document.querySelector('.help-icon') as HTMLDivElement;
     this.wrapper = document.querySelector('.help') as HTMLDivElement;
     this.lang = "en";

@@ -1,0 +1,16 @@
+.help-modal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 80vw;
+	background-color: var(--background-color-translucent);
+	color: var(--highlight-color);
+	border: 1px solid var(--highlight-color);
+	border-radius: 5px;
+	padding: 10px;
+	font-size: 0.75rem;
+	z-index: 20;
+	height: 70vh;
+	margin: auto;
+  transform: translate(-50%, -50%);
+}

@@ -1,0 +1,14 @@
+.help-icon {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 3rem;
+  color: var(--highlight-color);
+  z-index: 30;
+}
+
+.help-icon:hover {
+  color: var(--green);
+  transform: scale(1.3);
+}
