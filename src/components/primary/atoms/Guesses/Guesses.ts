@@ -4,14 +4,14 @@ export default class Guesses {
   public atom : HTMLDivElement;
 
   constructor(options : Record<string, string> = {}) {
-    addStylesheet('atom', 'Guesses', 'primary');
+    addStylesheet("atom", "Guesses", "primary");
     this.atom = this.create();
   }
   
   private create() : HTMLDivElement {
-    const container = document.createElement('div');
-    container.className = 'guesses';
-    container.setAttribute('data-testid', 'guesses');
+    const container = document.createElement("div");
+    container.className = "guesses";
+    container.setAttribute("data-testid", "guesses");
     return container;
   };
 };

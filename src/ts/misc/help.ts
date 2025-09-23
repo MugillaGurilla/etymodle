@@ -8,19 +8,19 @@ export default class Help {
   private instructions : Record<string, HTMLElement> = {}
 
   constructor() {
-    this.container = document.querySelector('.help-modal') as HTMLDivElement;
-    this.icon = document.querySelector('.help-icon') as HTMLDivElement;
-    this.wrapper = document.querySelector('.help') as HTMLDivElement;
+    this.container = document.querySelector(".help-modal") as HTMLDivElement;
+    this.icon = document.querySelector(".help-icon") as HTMLDivElement;
+    this.wrapper = document.querySelector(".help") as HTMLDivElement;
     this.lang = "en";
-    this.instructions.header = document.querySelector('.instructions-header') as HTMLElement;
-    this.instructions.body = document.querySelector('.instructions-body') as HTMLElement;
+    this.instructions.header = document.querySelector(".instructions-header") as HTMLElement;
+    this.instructions.body = document.querySelector(".instructions-body") as HTMLElement;
     this.toggle();
     this.propagate();
   }
 
   toggle() {
-    this.icon.addEventListener('click', () => {
-      this.container.classList.toggle('hidden');
+    this.icon.addEventListener("click", () => {
+      this.container.classList.toggle("hidden");
       return;
     });
   }
@@ -29,10 +29,10 @@ export default class Help {
     const lang = "en";
     this.instructions.header.innerText = translations[lang].instructionTitle;
  
-    const list = document.createElement('ol');
+    const list = document.createElement("ol");
     for (const key in translations[lang].instructions) {
       const text = translations[lang].instructions[key];
-      const p = document.createElement('li');
+      const p = document.createElement("li");
       p.innerText = text;
       list.appendChild(p);
     }

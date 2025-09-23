@@ -2,19 +2,19 @@ export default function lightning() : void {
   const frequency : number = 0.1;
 
   function createLightning() : void {
-    const container : HTMLElement | null = document.getElementById('lightning-container');
+    const container : HTMLElement | null = document.getElementById("lightning-container");
     if (!container) {
-      throw new Error('Lightning container not found');
+      throw new Error("Lightning container not found");
     };
 
-    const left : string = Math.random() * 100 + '%';
-    const lightning : HTMLElement = document.createElement('div');
-    lightning.classList.add('lightning');
+    const left : string = Math.random() * 100 + "%";
+    const lightning : HTMLElement = document.createElement("div");
+    lightning.classList.add("lightning");
     lightning.style.left = left;
     container.appendChild(lightning);
 
-    const wrapper : HTMLElement = document.createElement('div');
-    wrapper.classList.add('lightning-wrapper');
+    const wrapper : HTMLElement = document.createElement("div");
+    wrapper.classList.add("lightning-wrapper");
     wrapper.style.left = left;
     container.appendChild(wrapper);
     

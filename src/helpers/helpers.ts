@@ -1,4 +1,4 @@
-import { coolLetters } from '../../data/loading-screen.js';
+import { coolLetters } from "../../data/loading-screen.js";
 
 export const randomElement = (array : Array<any>) : any => {
     return array[Math.floor(Math.random() * array.length)];
@@ -21,8 +21,8 @@ export const removeFromArray = (array: Array<any>, specific: any) : Array<any> =
 }
 
 export const addStylesheet = (type: string, name: string, load: string) : void => {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
     link.href = `./src/components/${load}/${type}s/${name}/${name}.css`;
     document.head.appendChild(link);
 }
@@ -38,7 +38,7 @@ export const removeLoadingScreenOnLoad = () : void => {
             div.textContent = randomElement(coolLetters);
         }, i * 500);
     };
-    div.addEventListener('click', (event) => {
+    div.addEventListener("click", (event) => {
         div.remove();
     });
     setTimeout(() => {

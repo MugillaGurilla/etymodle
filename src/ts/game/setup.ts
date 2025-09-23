@@ -23,7 +23,7 @@ export default class Setup {
 
 
   private async prepareData() : Promise<void> {
-    await fetch(('./answer/today.json'))
+    await fetch(("./answer/today.json"))
       .then((response) => response.json())
       .then((data) => {
         this.untranslated = lowercase(data.untranslated);
@@ -34,7 +34,7 @@ export default class Setup {
         console.log("Today's word data prepared.");
       })
       .catch((error) => {
-        console.error('Error fetching today\'s word:', error);
+        console.error("Error fetching today's word:", error);
       });
   }
 

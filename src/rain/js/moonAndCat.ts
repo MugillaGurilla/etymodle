@@ -1,11 +1,11 @@
 export default function moonAndCat() : void {
-  const canvas = document.getElementById('moon-cat') as HTMLCanvasElement | null;
+  const canvas = document.getElementById("moon-cat") as HTMLCanvasElement | null;
   if (!canvas || !(canvas instanceof HTMLCanvasElement)) {
-    throw new Error('Canvas not found or not instance of HTMLCanvasElement');
+    throw new Error("Canvas not found or not instance of HTMLCanvasElement");
   }
-  const ctx : CanvasRenderingContext2D | null = canvas.getContext('2d');
+  const ctx : CanvasRenderingContext2D | null = canvas.getContext("2d");
   if (!ctx) {
-    throw new Error('Unable to get canvas context');
+    throw new Error("Unable to get canvas context");
   }
   const radius : number = 50;
   const buffer : number = 60;
@@ -17,8 +17,8 @@ export default function moonAndCat() : void {
     x: canvas.width / 2,
     y: canvas.height / 2,
     radius: radius,
-    fillColor: '#f7f7f7',
-    shadowColor: '#ffffffd7',
+    fillColor: "#f7f7f7",
+    shadowColor: "#ffffffd7",
     shadowBlur: 50,
     rotation: Math.PI / 2
   };
@@ -30,16 +30,16 @@ export default function moonAndCat() : void {
     headRadius: 7,
     earHeight: 5,
     tailWidth: 5,
-    colour: '#ed8d0c',
+    colour: "#ed8d0c",
   }
 
 
   function drawMoonAndCat() : void  {
     if (!canvas || !(canvas instanceof HTMLCanvasElement)) {
-      throw new Error('Canvas not found or not instance of HTMLCanvasElement');
+      throw new Error("Canvas not found or not instance of HTMLCanvasElement");
     }
     if (!ctx) {
-      throw new Error('Unable to get canvas context');
+      throw new Error("Unable to get canvas context");
     }
     
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -49,8 +49,8 @@ export default function moonAndCat() : void {
     ctx.beginPath();
     ctx.arc(moon.x, moon.y, moon.radius, -moon.rotation, Math.PI - moon.rotation, false); 
     ctx.fillStyle = moon.fillColor; 
-    // ctx.shadowColor = '';
-    // ctx.shadowBlur = '';
+    // ctx.shadowColor = "";
+    // ctx.shadowBlur = "";
     ctx.fill();
     ctx.closePath();
 
@@ -68,7 +68,7 @@ export default function moonAndCat() : void {
     ctx.arc(moon.x + 20, moon.y - 15, moon.radius - 7, 0, 2 * Math.PI);
     // ctx.shadowColor = null;
     // ctx.shadowBlur = null;
-    ctx.fillStyle = '#0f0f0feb';
+    ctx.fillStyle = "#0f0f0feb";
     ctx.fill();
     ctx.closePath();
 

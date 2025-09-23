@@ -15,8 +15,8 @@ export default class GameArea {
   }
   
   private create() : HTMLDivElement {
-    const container = document.createElement('div');
-    container.className = 'game-area';
+    const container = document.createElement("div");
+    container.className = "game-area";
     container.appendChild(new WordDisplay().atom);
     container.appendChild(new InputArea({
       placeholder: "Enter Your Guess Here",
@@ -28,7 +28,7 @@ export default class GameArea {
   };
   
   private render() : void {
-    const elements = document.querySelectorAll('GameArea');
+    const elements = document.querySelectorAll("GameArea");
     elements.forEach((el) => {
       const gameAreaElement = this.atom;
       el.replaceWith(gameAreaElement);
