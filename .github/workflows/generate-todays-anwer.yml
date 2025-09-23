@@ -11,6 +11,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Setup SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
+
     - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
@@ -38,7 +45,8 @@ jobs:
           git add -A
           DATE=$(date '+%Y-%m-%d')
           git commit -m "Automated changes for today's word ($DATE)"
-          git push
+          git remote set-url origin git@github.com:MugillaGurilla/etymodle.git
+          git push origin main
         fi
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
