@@ -2,6 +2,7 @@ import InstructionsBody from "../../atoms/InstructionsBody/InstructionsBody.js";
 import InstructionsHeader from "../../atoms/InstructionsHeader/InstructionsHeader.js";
 import ThemeToggle from "../../atoms/ThemeToggle/ThemeToggle.js";
 import { addStylesheet } from "../../../../helpers/helpers.js";
+import CloseHelpIcon from "../../atoms/CloseHelpIcon/CloseHelpIcon.js";
 
 export default class HelpModal {
   public atom : HTMLDivElement;
@@ -18,6 +19,7 @@ export default class HelpModal {
     container.appendChild(new InstructionsHeader().atom);
     container.appendChild(new InstructionsBody().atom);
     container.appendChild(new ThemeToggle({ lang: options.lang }).atom);
+    container.appendChild(new CloseHelpIcon({ lang: options.lang }).atom);
     return container;
   };
 };

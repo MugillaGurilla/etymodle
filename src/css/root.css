@@ -17,4 +17,5 @@ html[data-theme='light'] {
 
 :root {
   --max-game-area-width: 300px;
+  --help-modal-icon-step: 30px;
 }

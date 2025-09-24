@@ -1,16 +1,19 @@
-.theme-toggle:hover,
-.help-icon:hover {
-  color: var(--green);
-  transform: scale(1.3);
-}
+@media (hover: hover) and (pointer: fine) {
+  .theme-toggle:hover,
+  .help-icon:hover {
+    color: var(--green);
+    transform: scale(1.3);
+  }
 
-.theme-toggle:hover {
-  transform: scale(1.3) rotate(180deg);
+  .theme-toggle:hover {
+    transform: scale(1.3) rotate(180deg);
+  }
 }
 
 .theme-toggle {
   text-align: right;
   position: fixed;
+  cursor: pointer;
   top: 10px;
   right: 10px;
   font-size: 3rem;

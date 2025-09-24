@@ -21,8 +21,3 @@
 header {
   color: var(--highlight-color);
 }
-
-game {
-  max-height: 70vh;
-  overflow-y: auto;
-}

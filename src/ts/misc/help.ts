@@ -14,15 +14,7 @@ export default class Help {
     this.lang = "en";
     this.instructions.header = document.querySelector(".instructions-header") as HTMLElement;
     this.instructions.body = document.querySelector(".instructions-body") as HTMLElement;
-    this.toggle();
     this.propagate();
-  }
-
-  toggle() {
-    this.icon.addEventListener("click", () => {
-      this.container.classList.toggle("hidden");
-      return;
-    });
   }
 
   propagate() {

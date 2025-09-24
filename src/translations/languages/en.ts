@@ -14,9 +14,13 @@ export const en = {
     2: "You have to guess which language it is from.",
     3: "Type your guess into the input box and press submit.",
     4: "???",
-    5: "No profit. Eat the rich! Free Palestine."
+    5: "No profit. Eat the rich! Free Palestine.",
+    6: "Come back again tomorrow, when a new word will be available!"
   } as Record<string, string>,
+  helpIconTitle: "Help",
   helpIcon: "ℹ",
   toggleThemeTitle: "Toggle Theme",
-  toggleTheme: "☾"
+  toggleTheme: "☾",
+  closeHelpTitle: "Close",
+  closeHelp: "x"
 }

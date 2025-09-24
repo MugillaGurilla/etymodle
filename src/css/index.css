@@ -5,32 +5,14 @@ body {
 }
 
 footer {
-  margin: 30px;
-  padding: 5px 10px;
+  position: sticky;
+  bottom: 0;
 }
 
 footer > div {
   margin-right: 10px;
 }
 
-
 .hidden {
   display: none;
-}
-
-/* .dev-info {
-  background-color: var(--highlight-color);
-  padding: 10px 25px;
-  border-radius: 3px;
-}
-
-.version, 
-.theme-toggle,
-.dev-info > div {
-  color: var(--background-color);
-  font-size: 0.75rem;
-} */
-
-.theme-toggle {
-  cursor: pointer;
 }
