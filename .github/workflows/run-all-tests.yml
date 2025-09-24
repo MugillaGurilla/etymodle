@@ -1,0 +1,28 @@
+name: Run All Tests Against Main
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Run All Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: |
+          npm install
+          npx tsc --outDir dist
+
+      - name: Run all tests
+        run: |
+          npm install -g live-server
+          live-server --port=5500 --no-browser &
+          npx cypress run --config video=false
