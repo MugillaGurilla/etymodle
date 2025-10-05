@@ -29,5 +29,17 @@ export const supportedLanguages : Array<string> = [
   "croatian",
   "danish",
   "dutch",
-  "esperanto"
+  "esperanto",
+  "estonian",
+  "filipino",
+  "french",
+  "haitian creole",
+  "hausa",
+  "hawaiian",
+  "gujarati",
+  "hungarian",
+  "hmong",
+  "icelandic",
+  "igbo",
+  "indonesian",
 ];
