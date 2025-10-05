@@ -19,4 +19,15 @@ export const supportedLanguages : Array<string> = [
   "sanskrit",
   "thai",
   "xhosa",
+  "amharic",
+  "bengali",
+  "bosnian",
+  "azerbaijani",
+  "catalan",
+  "corsican",
+  "czech",
+  "croatian",
+  "danish",
+  "dutch",
+  "esperanto"
 ];
