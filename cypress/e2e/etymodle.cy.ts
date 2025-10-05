@@ -73,9 +73,9 @@ describe("Etymodle Test Dump", () => {
     cy.get("div.loading-area").click({ timeout: 5000 });
     cy.get("#guess-input").type("Afrikaans");
     cy.get("#submit-guess").click();
-    cy.get(".guesses").should("not.contain", "French");
+    cy.get(".guesses").should("not.contain", "Afrikaans");
     cy.get("[data-testid=\"match-info\"]").should("contain", "Not found in database: ");
-    cy.get("[data-testid=\"match-country\"]").should("contain", "French");
+    cy.get("[data-testid=\"match-country\"]").should("contain", "Afrikaans");
   });
 
   it("correct, lowercase input is accepted", () => {
