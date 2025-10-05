@@ -71,7 +71,7 @@ describe("Etymodle Test Dump", () => {
     cy.wait(200);
     cy.get("div.loading-area").should("exist");
     cy.get("div.loading-area").click({ timeout: 5000 });
-    cy.get("#guess-input").type("French");
+    cy.get("#guess-input").type("Afrikaans");
     cy.get("#submit-guess").click();
     cy.get(".guesses").should("not.contain", "French");
     cy.get("[data-testid=\"match-info\"]").should("contain", "Not found in database: ");
