@@ -38,17 +38,29 @@ class NewWord {
 
         const targetLanguage = "en"; 
         const sourceLanguage = "auto";
-        const url = `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=${sourceLanguage}&tl=${targetLanguage}&q=${this.untranslated}`;
-        
-        try {
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`Translation API error: ${response.statusText}`);
-            }
-            const data = await response.json();
+        const url = "http://localhost:5000/translate";
+        const method = "POST"
+        const body = JSON.stringify({
+            q: this.untranslated,
+            source: sourceLanguage,
+            target: targetLanguage,
+        });
+        const headers = { "Content-Type": "application/json" };
 
-            this.translated = data[0][0];
-            this.languageCode = data[0][1];
+        try {
+            const response = await fetch(url, {
+                method: method,
+                body: body,
+                headers: headers
+            });
+            if (!response.ok) {
+                throw new Error(`LibreTranslation API error: ${response.statusText}`);
+            }
+            const unparsed = await response.json();
+            const parsed = JSON.parse(unparsed)
+
+            this.translated = parsed.translatedText;
+            // this.languageCode = data[0][1];
             this.milestones.wordTranslated = true;
         }
         catch (error) {
