@@ -35,7 +35,7 @@ jobs:
     
     - name: Generate todays answer
       run: |
-        npx ts-node dist/src/scripts/new-word-from-lts.js
+        npx ts-node dist/src/scripts/copy-word-from-lts.js
 
     - name: Commit and push changes, if necessary
       run: |
