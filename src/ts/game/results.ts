@@ -4,7 +4,8 @@ import ResultsArea from "../../components/primary/organisms/ResultsArea/ResultsA
 
 export default class Results {
   private language : string;
-  private word : string;
+  private translated : string;
+  private untranslated : string;
   private languagecode : string;
 
   constructor(game : Game) {
@@ -12,22 +13,24 @@ export default class Results {
       throw new Error("Setup not initialized in Game.");
     }
     this.language = game.setup.get("language");
-    this.word = game.setup.get("translated");
+    this.translated = game.setup.get("translated");
+    this.untranslated = game.setup.get("untranslated");
     this.languagecode = game.setup.get("languageCode");
   }
 
   public win() : void {
     const gameArea = document.querySelector(".game-area");
     if (!gameArea) {
-      throw new Error("gameArea element not found.");
+      throw new Error("gameArea element does not exist.")
     }
     if (!gameArea.firstChild) {
-      throw new Error("gameArea element has no children.");
+      throw new Error("main element has no children.");
     }
     gameArea.innerHTML = "";
     const resultsArea = new ResultsArea({
       language: this.language,
-      word: this.word
+      translated: this.translated,
+      untranslated: this.untranslated
     });
     gameArea.appendChild(resultsArea.atoms.win);
   };
@@ -43,7 +46,8 @@ export default class Results {
     gameArea.innerHTML = "";
     const resultsArea = new ResultsArea({
       language: this.language,
-      word: this.word
+      translated: this.translated,
+      untranslated: this.untranslated
     });
     gameArea.appendChild(resultsArea.atoms.lose);
   };
