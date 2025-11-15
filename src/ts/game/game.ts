@@ -7,9 +7,7 @@ export default class Game {
   correcter?: Correcter;
   results?: Results;
 
-  constructor() {
-    // this.announcer = new Announcer(this);
-  }
+  constructor() {}
   
   public async init() : Promise<void> {
     this.setup = new Setup();

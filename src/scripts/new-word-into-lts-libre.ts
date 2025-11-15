@@ -60,7 +60,6 @@ class NewWord {
             const parsed = JSON.parse(unparsed)
 
             this.translated = parsed.translatedText;
-            // this.languageCode = data[0][1];
             this.milestones.wordTranslated = true;
         }
         catch (error) {

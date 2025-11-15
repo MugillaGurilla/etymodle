@@ -1,5 +1,4 @@
 import { addStylesheet, sentencecase } from "../../../../helpers/helpers.js";
-// import WordDisplay from "../../atoms/WordDisplay/WordDisplay.js";
 
 export default class ResultsArea {
   public atoms : Record<string, HTMLDivElement> = {};
@@ -36,9 +35,6 @@ export default class ResultsArea {
     if  (!this.untranslated) {
       throw new Error("Untranslated property is required for ResultsArea not found or removed.")
     }
-    // const wordDisplay = new WordDisplay({ word: this.untranslated })
-    // div.appendChild(wordDisplay.atom);
-    // div.appendChild(new WordDisplay({ word: sentencecase(this.untranslated) }).atom);
     
     const wellDone = document.createElement("h2");
     wellDone.setAttribute("data-testid", "well-done");
