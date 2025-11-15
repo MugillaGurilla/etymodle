@@ -1,4 +1,4 @@
-type LanguageFamily =
+export type LanguageFamily =
   | "semitic"
   | "germanic"
   | "slavic"

@@ -9,8 +9,8 @@ import Guess from "../../components/secondary/atoms/Guess/Guess.js";
 
 export default class Correcter {
   private supportedLanguages : Array<string> = [];
-  private language? : string;
-  private languagecode? : string;
+  private language : string;
+  // private languagecode? : string;
   private guess: string = "";
   private currentGuesses : number = 0;
   private maxGuesses : number;
@@ -31,7 +31,7 @@ export default class Correcter {
       throw new Error("Setup not initialized in Game.");
     }
     this.language = game.setup.get("language");
-    this.languagecode = game.setup.get("languageCode");
+    // this.languagecode = game.setup.get("languageCode");
     this.maxGuesses = game.setup.get("maxGuesses");
     this.matcher = new Matcher(this);
     this.results = new Results(game);
@@ -84,7 +84,7 @@ export default class Correcter {
   
   
   private addGuess() : void {
-    new Guess({guess: this.guess});
+    new Guess({guess: this.guess, correctLanguage: this.language});
     this.currentGuesses += 1;
   }
 

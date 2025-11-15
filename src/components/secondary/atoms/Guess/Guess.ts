@@ -1,15 +1,18 @@
 import { addStylesheet, sentencecase } from "../../../../helpers/helpers.js";
+import { familyToLanguages, languageToFamily } from "../../../../../data/language-families.js";
 
 export default class Guess {
   private guess : string = "";
   private input : HTMLInputElement;
   private container : HTMLElement;
+  private correctLanguage : string;
 
   constructor(options : Record<string, string>) {
     addStylesheet("atom", "Guess", "secondary");
     this.guess = options.guess || "";
     this.input = document.getElementById("guess-input") as HTMLInputElement;
     this.container = document.querySelector(".guesses") as HTMLElement;
+    this.correctLanguage = options.correctLanguage || "";
     this.render();
   };
 
@@ -31,10 +34,27 @@ export default class Guess {
     const guessElement : HTMLElement = document.createElement("div");
     guessElement.textContent = sentencecase(this.guess);
     guessElement.className = "guess";
+    if (this.isInLanguageFamily()) {
+      guessElement.classList.add("same-family");
+    }
     this.container.appendChild(guessElement);
     if (!this.input) {
       throw new Error("Input element not found, unable to clear.");
     }
     this.input.value = "";
+  }
+
+  private isInLanguageFamily() : boolean {
+    const family = languageToFamily[this.guess.toLowerCase()] ?? null;
+    if (!family) {
+      console.log("No close language families found because language is isolated (per this game).");
+      return false;
+    }
+    const related : boolean = familyToLanguages[family].includes(this.correctLanguage.toLowerCase());
+    if (!related) {
+      console.log("No close language families found because language is not related.");
+      return false;
+    }
+    return true;
   }
 }
