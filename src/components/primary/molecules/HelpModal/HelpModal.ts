@@ -10,7 +10,6 @@ export default class HelpModal {
   constructor(options : Record<string, string> = {}) {
     addStylesheet("molecule", "HelpModal", "primary");
     this.atom = this.create(options);
-    // this.render();
   };
 
   private create(options: Record<string, string> = {}): HTMLDivElement {

@@ -1,56 +1,60 @@
-import { addStylesheet, sentencecase } from "../../../../helpers/helpers.js";
-import { translations } from "../../../../translations/root.js";
+import { addStylesheet, lowercase, sentencecase } from "../../../../helpers/helpers.js";
+import { familyToLanguages, languageToFamily } from "../../../../../data/language-families.js";
 
 export default class Guess {
-  public matchingLanguage : string = "";
-  private matchInfo : HTMLElement | null = null;
-  private matchCountry : HTMLElement | null = null;
-  private completed : boolean = false;
-  
-  constructor(options : Record<string, string> = {}) {
-    addStylesheet("atom", "Guess", "secondary");
-    this.matchingLanguage = options.language || "";
-    this.matchInfo = document.getElementById("match-info");
-    this.matchCountry = document.getElementById("match-country");
-    if (options.match === "close") this.closeMatch();
-    if (options.match === "none") this.noMatch();
-    if (options.reset) this.removeAll();
+  private guess : string = "";
+  private input : HTMLInputElement;
+  private container : HTMLElement;
+  private correctLanguage : string;
+
+  constructor(options : Record<string, string>) {
+    this.guess = options.guess || "";
+    this.input = document.getElementById("guess-input") as HTMLInputElement;
+    this.container = document.querySelector(".guesses") as HTMLElement;
+    this.correctLanguage = options.correctLanguage || "";
+    this.render();
+  };
+
+  private sanity() : boolean {
+    if (!this.input) {
+      throw new Error("Guess input not found.");
+    }
+    if (!this.container) {
+      throw new Error("Guesses container not found.");
+    }
+    return true;
   }
 
-  private closeMatch() : void {
-    if (this.sanity()) { 
-      this.matchInfo!.textContent = translations.en.closeMatch;
-      this.matchCountry!.textContent = sentencecase(this.matchingLanguage) + "?";
-      this.completed = true;
+  private render()  {
+    if (!this.sanity()) {
+      
+    };
+
+    const guessElement : HTMLElement = document.createElement("div");
+    guessElement.textContent = sentencecase(this.guess);
+    guessElement.className = "guess";
+    guessElement.setAttribute("data-testid", "guess");
+    guessElement.setAttribute("data-language", lowercase(this.guess));
+    if (this.isInLanguageFamily()) {
+      guessElement.classList.add("same-family");
     }
+    this.container.appendChild(guessElement);
+    if (!this.input) {
+      throw new Error("Input element not found, unable to clear.");
+    }
+    this.input.value = "";
   }
 
-  private noMatch() : void {
-    this.matchCountry!.textContent = sentencecase(this.matchingLanguage);
-    this.matchInfo!.textContent = translations.en.noMatch;
-    this.completed = true;
-  }
-
-  private removeAll() : void {
-    if (this.sanity({ reset: true})) {
-      this.matchInfo!.textContent = "";
-      this.matchCountry!.textContent = "";
-      this.completed = true;
+  private isInLanguageFamily() : boolean {
+    const family = languageToFamily[this.guess.toLowerCase()] ?? null;
+    if (!family) {
+      console.log("No close language families found because language is isolated (per this game).");
+      return false;
     }
-  }
-
-  private sanity(options : Record<string, any> = {}) : boolean {
-    if (this.completed) {
-      throw new Error("Already completed.");
-    }
-    if (!this.matchInfo) {  
-      throw new Error("Match info span not found.");
-    }
-    if (!this.matchCountry) {
-      throw new Error("Match country span not found.");
-    }
-    if (!this.matchingLanguage && !options.reset) {
-      throw new Error("No matching language provided for no match.");
+    const related : boolean = familyToLanguages[family].includes(this.correctLanguage.toLowerCase());
+    if (!related) {
+      console.log("No close language families found because language is not related.");
+      return false;
     }
     return true;
   }

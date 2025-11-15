@@ -1,1 +1,16 @@
+.guess {
+  padding: 10px;
+  max-height: 1.5rem;;
+  border: 1px solid var(--highlight-color);
+  border-radius: 5px;
+  background-color: var(--background-color);
+  color: var(--highlight-color);
+  width: fit-content;
+  margin: 10px;
+}
 
+.guess.same-family {
+  background-color: var(--background-color-translucent);
+  color: var(--green);
+  border: 3px var(--highlight-color) solid;
+}

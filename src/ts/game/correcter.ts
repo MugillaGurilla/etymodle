@@ -4,13 +4,13 @@ import { supportedLanguages } from "../../../data/supported-languages.js";
 import Game from "./game.js";
 import Matcher from "./matcher.js";
 
-import ResultsArea from "../../components/primary/organisms/ResultsArea/ResultsArea.js";
 import Results from "./results.js";
+import Guess from "../../components/secondary/atoms/Guess/Guess.js";
 
 export default class Correcter {
   private supportedLanguages : Array<string> = [];
-  private language? : string;
-  private languagecode? : string;
+  private language : string;
+  // private languagecode? : string;
   private guess: string = "";
   private currentGuesses : number = 0;
   private maxGuesses : number;
@@ -31,7 +31,7 @@ export default class Correcter {
       throw new Error("Setup not initialized in Game.");
     }
     this.language = game.setup.get("language");
-    this.languagecode = game.setup.get("languageCode");
+    // this.languagecode = game.setup.get("languageCode");
     this.maxGuesses = game.setup.get("maxGuesses");
     this.matcher = new Matcher(this);
     this.results = new Results(game);
@@ -69,7 +69,6 @@ export default class Correcter {
 
     if (this.isCorrect()) {
       this.results.win();
-      console.log("Correct!");
       return; 
     }
 
@@ -79,27 +78,13 @@ export default class Correcter {
     
     if (this.currentGuesses >= this.maxGuesses) {
       this.results.lose();
-      console.log("Out of guesses!");
       return;
     }
   }
   
   
   private addGuess() : void {
-    // This can be React-ified later
-    const guessesContainer : HTMLElement | null = document.querySelector(".guesses");
-    if (!guessesContainer) {
-      throw new Error("Guesses container not found.");
-    }
-    const guessElement : HTMLElement = document.createElement("div");
-    guessElement.textContent = sentencecase(this.guess);
-    guessElement.className = "guess";
-    guessesContainer.appendChild(guessElement);
-    if (!this.input) {
-      throw new Error("Input element not found, unable to clear.");
-    }
-    this.input.value = "";
-    console.log(this.currentGuesses);
+    new Guess({guess: this.guess, correctLanguage: this.language});
     this.currentGuesses += 1;
   }
 

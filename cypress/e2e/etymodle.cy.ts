@@ -1,6 +1,7 @@
 import { supportedLanguages } from "../../data/supported-languages.js";
 import { lowercase, sentencecase } from "../../src/helpers/helpers.js";
 import { coolLetters } from "../../data/loading-screen.js";
+import { familyToLanguages, languageToFamily } from "../../data/language-families.js";
 
 describe("Etymodle Test Dump", () => { 
   it("loads homepage", () => {
@@ -169,5 +170,38 @@ describe("Etymodle Test Dump", () => {
     cy.get("h2.instructions-header").should("contain.text", "How To Play");
     cy.get("div.help-icon").click({ force: true });
     cy.get("div.help-modal").should("have.class", "hidden");
+  });
+
+  it("close language family match is give in green with thicker border", () => {
+    cy.visit("http://localhost:5500");
+    cy.contains("Etymodle");
+    cy.wait(200);
+    cy.get("div.loading-area").should("exist");
+    cy.get("div.loading-area").click({ timeout: 5000 });
+    cy.fixture("../../answer/today.json").then((answer) => {
+      const language = answer.language;
+      cy.log(language);
+      console.log(language);
+      const family = languageToFamily[lowercase(language)];
+      cy.log(family)
+      console.log(family)
+      const all = familyToLanguages[family];
+      const related = all.find((lang) => lang !== language);
+      if (!related) {
+        throw new Error("No related language found.");
+      }
+      cy.log(related);
+      cy.get("#guess-input").type(related);
+      cy.get("#submit-guess").click();
+      cy.get(".guesses").should("contain", sentencecase(related));
+      cy.get( ".guess.same-family[data-language=\"" + related.toLowerCase() + "\"]" ).should("exist");
+      cy.get( ".guess.same-family[data-language=\"" + related.toLowerCase() + "\"]" ).should("have.css", "border-width", "3px");
+      cy.get( ".guess.same-family[data-language=\"" + related.toLowerCase() + "\"]" ).should("have.css", "color", "rgb(76, 175, 80)");
+      cy.get( ".guess.same-family[data-language=\"" + related.toLowerCase() + "\"]" )
+        .should("have.css", "background-color")
+        .and(($color) => {
+          expect(["rgba(15, 15, 15, 0.996)", "rgba(247, 247, 247, 0.996)"]).to.include($color);
+        });
+    });
   });
 });

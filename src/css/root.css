@@ -5,6 +5,7 @@ html[data-theme='dark'] {
   --highlight-color: #f7f7f7;
   --green: #4CAF50;
   --red: #f44336;
+  --close-language-family: #159e1047;
 }
 
 html[data-theme='light'] {
@@ -13,6 +14,7 @@ html[data-theme='light'] {
   --highlight-color: #0f0f0f;
   --green: #4CAF50;
   --red: #f44336;
+  --close-language-family: #fde9cc62;
 }
 
 :root {
