@@ -1,4 +1,4 @@
-import { addStylesheet, sentencecase } from "../../../../helpers/helpers.js";
+import { addStylesheet, lowercase, sentencecase } from "../../../../helpers/helpers.js";
 import { familyToLanguages, languageToFamily } from "../../../../../data/language-families.js";
 
 export default class Guess {
@@ -33,6 +33,8 @@ export default class Guess {
     const guessElement : HTMLElement = document.createElement("div");
     guessElement.textContent = sentencecase(this.guess);
     guessElement.className = "guess";
+    guessElement.setAttribute("data-testid", "guess");
+    guessElement.setAttribute("data-language", lowercase(this.guess));
     if (this.isInLanguageFamily()) {
       guessElement.classList.add("same-family");
     }
