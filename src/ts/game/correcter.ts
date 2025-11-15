@@ -69,7 +69,6 @@ export default class Correcter {
 
     if (this.isCorrect()) {
       this.results.win();
-      console.log("Correct!");
       return; 
     }
 
@@ -79,7 +78,6 @@ export default class Correcter {
     
     if (this.currentGuesses >= this.maxGuesses) {
       this.results.lose();
-      console.log("Out of guesses!");
       return;
     }
   }
