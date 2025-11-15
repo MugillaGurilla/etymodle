@@ -3,6 +3,10 @@ name: Run All Tests Against Main
 on:
   workflow_dispatch:
 
+  pull_request:
+    branches:
+      - main
+
 jobs:
   deploy:
     name: Run All Tests
