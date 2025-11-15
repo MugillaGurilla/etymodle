@@ -33,7 +33,6 @@ export const supportedLanguages : Array<string> = [
   "estonian",
   "filipino",
   "french",
-  "haitian%20creole",
   "hausa",
   "hawaiian",
   "gujarati",
