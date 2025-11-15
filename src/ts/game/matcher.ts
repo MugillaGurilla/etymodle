@@ -1,4 +1,4 @@
-import Guess from "../../components/secondary/atoms/Guess/Guess.js";
+import Prompt from "../../components/secondary/atoms/Prompt/Prompt.js";
 import { lowercase, sentencecase } from "../../helpers/helpers.js";
 import { Match } from "../types/types.js";
 
@@ -48,15 +48,15 @@ export default class Matcher {
     this.matching = "none";
     this.guess = "";
     this.matchingLanguage = "";
-    new Guess({reset: "true"});
+    new Prompt({reset: "true"});
   }
 
   private addCloseMatchInfo() : void {
-    new Guess({match: "close", language: this.matchingLanguage});
+    new Prompt({match: "close", language: this.matchingLanguage});
   }
 
   private addNoMatchInfo() : void {
-    new Guess({match: "none", language: this.guess});
+    new Prompt({match: "none", language: this.guess});
   }
 
   private matchPercentage() {

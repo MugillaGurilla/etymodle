@@ -4,7 +4,6 @@ import { supportedLanguages } from "../../../data/supported-languages.js";
 import Game from "./game.js";
 import Matcher from "./matcher.js";
 
-import ResultsArea from "../../components/primary/organisms/ResultsArea/ResultsArea.js";
 import Results from "./results.js";
 
 export default class Correcter {

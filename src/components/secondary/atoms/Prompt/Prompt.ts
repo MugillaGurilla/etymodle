@@ -1,14 +1,14 @@
 import { addStylesheet, sentencecase } from "../../../../helpers/helpers.js";
 import { translations } from "../../../../translations/root.js";
 
-export default class Guess {
+export default class Prompt {
   public matchingLanguage : string = "";
   private matchInfo : HTMLElement | null = null;
   private matchCountry : HTMLElement | null = null;
   private completed : boolean = false;
   
   constructor(options : Record<string, string> = {}) {
-    addStylesheet("atom", "Guess", "secondary");
+    addStylesheet("atom", "Prompt", "secondary");
     this.matchingLanguage = options.language || "";
     this.matchInfo = document.getElementById("match-info");
     this.matchCountry = document.getElementById("match-country");
