@@ -5,6 +5,7 @@ import Game from "./game.js";
 import Matcher from "./matcher.js";
 
 import Results from "./results.js";
+import Guess from "../../components/secondary/atoms/Guess/Guess.js";
 
 export default class Correcter {
   private supportedLanguages : Array<string> = [];
@@ -85,20 +86,7 @@ export default class Correcter {
   
   
   private addGuess() : void {
-    // This can be React-ified later
-    const guessesContainer : HTMLElement | null = document.querySelector(".guesses");
-    if (!guessesContainer) {
-      throw new Error("Guesses container not found.");
-    }
-    const guessElement : HTMLElement = document.createElement("div");
-    guessElement.textContent = sentencecase(this.guess);
-    guessElement.className = "guess";
-    guessesContainer.appendChild(guessElement);
-    if (!this.input) {
-      throw new Error("Input element not found, unable to clear.");
-    }
-    this.input.value = "";
-    console.log(this.currentGuesses);
+    new Guess({guess: this.guess});
     this.currentGuesses += 1;
   }
 
