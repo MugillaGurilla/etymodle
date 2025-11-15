@@ -25,7 +25,7 @@ export default class Help {
     for (const key in translations[lang].instructions) {
       const text = translations[lang].instructions[key];
       const p = document.createElement("li");
-      p.innerText = text;
+      p.innerHTML = text;
       list.appendChild(p);
     }
     this.instructions.body.appendChild(list);

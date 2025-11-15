@@ -8,7 +8,6 @@ export default class Guess {
   private correctLanguage : string;
 
   constructor(options : Record<string, string>) {
-    addStylesheet("atom", "Guess", "secondary");
     this.guess = options.guess || "";
     this.input = document.getElementById("guess-input") as HTMLInputElement;
     this.container = document.querySelector(".guesses") as HTMLElement;
