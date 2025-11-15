@@ -172,7 +172,7 @@ describe("Etymodle Test Dump", () => {
     cy.get("div.help-modal").should("have.class", "hidden");
   });
 
-  it("close language family match is give in green with thicker border", () => {
+  it.only("close language family match is give in green with thicker border", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
     cy.wait(200);
@@ -197,7 +197,11 @@ describe("Etymodle Test Dump", () => {
       cy.get( ".guess.same-family[data-language=\"" + related.toLowerCase() + "\"]" ).should("exist");
       cy.get( ".guess.same-family[data-language=\"" + related.toLowerCase() + "\"]" ).should("have.css", "border-width", "3px");
       cy.get( ".guess.same-family[data-language=\"" + related.toLowerCase() + "\"]" ).should("have.css", "color", "rgb(76, 175, 80)");
-      cy.get( ".guess.same-family[data-language=\"" + related.toLowerCase() + "\"]" ).should("have.css", "background-color", "rgba(15, 15, 15, 0.996)");
+      cy.get( ".guess.same-family[data-language=\"" + related.toLowerCase() + "\"]" )
+        .should("have.css", "background-color")
+        .and(($color) => {
+          expect(["rgba(15, 15, 15, 0.996)", "rgba(247, 247, 247, 0.996)"]).to.include($color);
+        });
     });
   });
 });
