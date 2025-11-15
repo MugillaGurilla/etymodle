@@ -172,7 +172,7 @@ describe("Etymodle Test Dump", () => {
     cy.get("div.help-modal").should("have.class", "hidden");
   });
 
-  it.only("close language family match is give in green with thicker border", () => {
+  it("close language family match is give in green with thicker border", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
     cy.wait(200);
