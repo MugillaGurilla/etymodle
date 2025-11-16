@@ -180,12 +180,14 @@ describe("Etymodle Test Dump", () => {
     cy.get("div.loading-area").click({ timeout: 5000 });
     cy.fixture("../../answer/today.json").then((answer) => {
       const language = answer.language;
-      cy.log(language);
-      console.log(language);
       const family = languageToFamily[lowercase(language)];
-      cy.log(family)
-      console.log(family)
       const all = familyToLanguages[family];
+      if (!all) {
+        cy.log("No family found for language: " + language);
+        cy.log("It's an isolate as per this game's data.");
+        cy.log("Passing test.");
+        return;
+      }
       const related = all.find((lang) => lang !== language);
       if (!related) {
         throw new Error("No related language found.");
