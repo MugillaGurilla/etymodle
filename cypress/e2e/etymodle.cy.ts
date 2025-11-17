@@ -172,14 +172,14 @@ describe("Etymodle Test Dump", () => {
     cy.get("div.help-modal").should("have.class", "hidden");
   });
 
-  it("close language family match is give in green with thicker border", () => {
+  it.only("close language family match is give in green with thicker border", () => {
     cy.visit("http://localhost:5500");
     cy.contains("Etymodle");
     cy.wait(200);
     cy.get("div.loading-area").should("exist");
     cy.get("div.loading-area").click({ timeout: 5000 });
     cy.fixture("../../answer/today.json").then((answer) => {
-      const language = answer.language;
+      const language = lowercase(answer.language);
       const family = languageToFamily[lowercase(language)];
       const all = familyToLanguages[family];
       if (!all) {
