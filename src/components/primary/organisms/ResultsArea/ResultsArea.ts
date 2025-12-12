@@ -36,6 +36,7 @@ export default class ResultsArea {
       throw new Error("Untranslated property is required for ResultsArea not found or removed.")
     }
     
+    // All this needs to be internationalised later
     const wellDone = document.createElement("h2");
     wellDone.setAttribute("data-testid", "well-done");
     wellDone.className = "well-done results-prompt";
@@ -51,9 +52,19 @@ export default class ResultsArea {
     const meaning = document.createElement("p");
     meaning.setAttribute("data-testid", "meaning");
     meaning.className = "meaning results-prompt";
-
     meaning.textContent = `It means "${this.translated}"`;
     div.appendChild(meaning);
+
+    const issue = document.createElement("p");
+    issue.setAttribute("data-testid", "issue");
+    issue.className = "issue results-prompt";
+    issue.textContent = "Is there a problem with this translation?";
+    issue.appendChild(document.createElement("br"));
+    const link = document.createElement("a");
+    link.setAttribute("href", `mailto:etymodle@proton.me?subject=Translation Issue: ${this.untranslated}&body=The translation for the word "${this.untranslated}" seems to be incorrect. The current translation is "${this.translated}". Please provide the correct translation.`);
+    link.textContent = "Report it here";
+    issue.appendChild(link);
+    div.appendChild(issue);
     
     this.atoms.win = div;
     return div;

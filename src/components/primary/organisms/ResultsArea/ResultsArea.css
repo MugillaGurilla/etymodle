@@ -18,3 +18,16 @@
   color: var(--highlight-color);
   font-style: italic;
 }
+
+.issue.results-prompt {
+  font-size: 0.8rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  color: var(--highlight-color);
+  line-height: 1.5rem;
+}
+
+.issue.results-prompt > a {
+  color: var(--red);
+  text-decoration: underline;
+}
